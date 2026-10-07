@@ -1,15 +1,18 @@
+---
+---
+{%- assign s = site.data.site -%}
 <!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Giullia Pimentel | Assessoria, conteúdo e eventos</title>
-<meta name="description" content="Giullia Pimentel, a Giu. Assessora de imprensa, criadora de conteúdo e estrategista de marcas no digital. Eventos, futebol e cobertura real time em Curitiba.">
-<meta property="og:title" content="Giullia Pimentel | Assessoria, conteúdo e eventos">
-<meta property="og:description" content="Ela está onde as coisas acontecem. E sabe contar o que está acontecendo.">
+<title>{{ s.geral.titulo_aba | escape }}</title>
+<meta name="description" content="{{ s.geral.descricao_google | escape }}">
+<meta property="og:title" content="{{ s.geral.titulo_aba | escape }}">
+<meta property="og:description" content="{{ s.geral.frase_compartilhamento | escape }}">
 <meta property="og:type" content="website">
-<!-- EDITAR: quando o site tiver domínio, preencher og:url e og:image com endereços completos -->
-<meta property="og:image" content="img/giu-credencial.webp">
+<meta property="og:url" content="{{ site.url }}{{ site.baseurl }}/">
+<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/{{ s.geral.imagem_compartilhamento }}">
 <meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -357,6 +360,7 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
   .js .scribble path{stroke-dashoffset:0!important}
   .strip .roll{transform:none!important}
 }
+.logos img{display:block;max-width:72%;max-height:64px;margin:0 auto;object-fit:contain}
 </style>
 </head>
 <body>
@@ -367,7 +371,7 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
 <!-- ================= HEADER ================= -->
 <header class="top">
   <div class="bar">
-    <a class="brand" href="#inicio" aria-label="Giullia Pimentel, voltar ao início">Giullia Pimentel</a>
+    <a class="brand" href="#inicio" aria-label="{{ s.inicio.nome | escape }} {{ s.inicio.sobrenome | escape }}, voltar ao início">{{ s.inicio.nome | escape }} {{ s.inicio.sobrenome | escape }}</a>
     <nav aria-label="Principal">
       <ul class="nav">
         <li><a href="#sobre">Sobre</a></li>
@@ -390,32 +394,41 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
     <li><a href="#marcas">Marcas</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
-  <p class="foot">Curitiba / PR · Assessoria · Conteúdo · Eventos</p>
+  <p class="foot">{{ s.geral.menu_rodape | escape }}</p>
 </div>
 
 <main>
 <!-- ================= HERO ================= -->
+{%- assign fotos = s.inicio.fotos -%}
+{%- assign nf = fotos | size -%}
+{%- assign meio = nf | divided_by: 2 -%}
 <section class="hero" id="inicio">
   <div class="wrap">
     <div class="hero-text">
-      <p class="hi">oi, eu sou a</p>
+      <p class="hi">{{ s.inicio.saudacao | escape }}</p>
       <h1>
-        <span class="name">Giullia<br>Pimentel</span>
-        <span class="role">Assessora de Imprensa, criadora de conteúdo e estrategista de marcas no digital</span>
+        <span class="name">{{ s.inicio.nome | escape }}<br>{{ s.inicio.sobrenome | escape }}</span>
+        <span class="role">{{ s.inicio.cargo | escape }}</span>
       </h1>
-      <ul class="tags" aria-label="Territórios"><li>imprensa</li><li>eventos</li><li>futebol</li><li>conteúdo</li></ul>
-      <p class="bio">Comunicadora que trabalha onde as coisas acontecem. Faço assessoria de imprensa, conteúdo e cobertura em tempo real para eventos, clubes e marcas.</p>
+      <ul class="tags" aria-label="Territórios">{% for p in s.inicio.palavras %}<li>{{ p | escape }}</li>{% endfor %}</ul>
+      <p class="bio">{{ s.inicio.apresentacao | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
       <div class="hero-actions">
-        <a class="btn btn-y" href="#projetos">Ver projetos <span class="arr" aria-hidden="true">→</span></a>
-        <a class="btn btn-w" href="mailto:giullia_pimentel@hotmail.com">Mandar um email</a>
+        <a class="btn btn-y" href="#projetos">{{ s.inicio.botao_projetos | escape }} <span class="arr" aria-hidden="true">→</span></a>
+        {%- if s.contato.email != blank %}
+        <a class="btn btn-w" href="mailto:{{ s.contato.email | strip }}">{{ s.inicio.botao_email | escape }}</a>
+        {%- endif %}
       </div>
     </div>
-    <div class="strips" aria-label="Fotos da Giullia em eventos e no futebol">
-      <div class="strip b" aria-hidden="true"><div class="win"><div class="roll"><img src="img/giu-festival.webp" alt="" width="600" height="800" loading="lazy"><img src="img/giu-copa.webp" alt="" width="600" height="800" loading="lazy"><img src="img/giu-joinha.webp" alt="" width="600" height="800" loading="lazy"><img src="img/giu-backstage.webp" alt="" width="600" height="800" loading="lazy"><img src="img/giu-credencial.webp" alt="" width="600" height="800" loading="lazy"><img src="img/giu-lente.webp" alt="" width="600" height="800" loading="lazy"><img src="img/giu-campo-sq.webp" alt="" width="600" height="800" loading="lazy"><img src="img/giu-festival.webp" alt="" width="600" height="800"><img src="img/giu-copa.webp" alt="" width="600" height="800"><img src="img/giu-joinha.webp" alt="" width="600" height="800"><img src="img/giu-backstage.webp" alt="" width="600" height="800"><img src="img/giu-credencial.webp" alt="" width="600" height="800"><img src="img/giu-lente.webp" alt="" width="600" height="800"><img src="img/giu-campo-sq.webp" alt="" width="600" height="800"></div></div></div>
+    <div class="strips" aria-label="Fotos da {{ s.inicio.nome | escape }} em eventos e no futebol">
+      <div class="strip b" aria-hidden="true"><div class="win"><div class="roll">{% for r in (1..2) %}{% for f in fotos offset: meio %}<img src="{{ f.foto }}" alt="" width="600" height="800"{% if r == 1 %} loading="lazy"{% endif %}>{% endfor %}{% for f in fotos limit: meio %}<img src="{{ f.foto }}" alt="" width="600" height="800"{% if r == 1 %} loading="lazy"{% endif %}>{% endfor %}{% endfor %}</div></div></div>
       <div class="strip a">
-        <span class="live"><i aria-hidden="true"></i>Ao vivo</span>
-        <div class="win"><div class="roll"><img src="img/giu-credencial.webp" alt="Giullia sorrindo nos bastidores de um festival" width="600" height="800"><img src="img/giu-lente.webp" alt="Giullia de boné rindo com luz dourada" width="600" height="800"><img src="img/giu-campo-sq.webp" alt="Giullia à beira do campo de futebol" width="600" height="800"><img src="img/giu-festival.webp" alt="Giullia no festival no fim de tarde" width="600" height="800"><img src="img/giu-copa.webp" alt="Giullia de jaqueta em um espaço de evento" width="600" height="800"><img src="img/giu-joinha.webp" alt="Giullia fazendo joinha em um festival" width="600" height="800"><img src="img/giu-backstage.webp" alt="Giullia no backstage de um palco" width="600" height="800"><img src="img/giu-credencial.webp" alt="" aria-hidden="true" width="600" height="800"><img src="img/giu-lente.webp" alt="" aria-hidden="true" width="600" height="800"><img src="img/giu-campo-sq.webp" alt="" aria-hidden="true" width="600" height="800"><img src="img/giu-festival.webp" alt="" aria-hidden="true" width="600" height="800"><img src="img/giu-copa.webp" alt="" aria-hidden="true" width="600" height="800"><img src="img/giu-joinha.webp" alt="" aria-hidden="true" width="600" height="800"><img src="img/giu-backstage.webp" alt="" aria-hidden="true" width="600" height="800"></div></div>
-        <span class="caption">direto do backstage</span>
+        {%- if s.inicio.selo != blank %}
+        <span class="live"><i aria-hidden="true"></i>{{ s.inicio.selo | escape }}</span>
+        {%- endif %}
+        <div class="win"><div class="roll">{% for f in fotos %}<img src="{{ f.foto }}" alt="{{ f.descricao | escape }}" width="600" height="800">{% endfor %}{% for f in fotos %}<img src="{{ f.foto }}" alt="" aria-hidden="true" width="600" height="800">{% endfor %}</div></div>
+        {%- if s.inicio.legenda_fotos != blank %}
+        <span class="caption">{{ s.inicio.legenda_fotos | escape }}</span>
+        {%- endif %}
       </div>
     </div>
   </div>
@@ -425,19 +438,20 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
 <section class="sobre" id="sobre">
   <div class="wrap grid">
     <div class="circle-photo rv">
-      <img src="img/giu-lente.webp" width="733" height="1100" loading="lazy"
-           alt="Giullia de boné e óculos de sol, rindo durante um evento, com luz dourada de fim de tarde">
+      <img src="{{ s.sobre.foto }}" loading="lazy" alt="{{ s.sobre.foto_descricao | escape }}">
       <span class="dot" aria-hidden="true"></span>
     </div>
     <div>
-      <h2 class="h-l rv d1">Sobre mim</h2>
+      <h2 class="h-l rv d1">{{ s.sobre.titulo | escape }}</h2>
       <svg class="scribble rv d2" viewBox="0 0 440 70" aria-hidden="true"><path d="M8 58 C60 30 90 22 104 30 C116 38 72 62 92 58 C120 50 150 18 168 28 C182 38 140 62 164 56 C196 46 220 16 238 26 C252 36 210 60 236 54 C268 46 292 18 310 26 C324 34 286 58 312 52 C350 42 390 30 432 30"/></svg>
       <div class="lead rv d2">
-        <p>Sou a Giu, assessora de imprensa e criadora de conteúdo em Curitiba. Hoje estou na CWB Brasil Group, onde cuido da assessoria, do conteúdo digital e da <span class="hl">cobertura real time dos eventos</span>, com entregas para as marcas patrocinadoras.</p>
-        <p>Minha base é o esporte. Fui colunista sobre o Coritiba no Mercado do Futebol, repórter credenciada da Invicta Press em jogos e coletivas e, desde 2019, sou superintendente de comunicação do Clube SE Tanguá.</p>
-        <p>No dia do evento, sou eu quem atende a imprensa, grava, publica e confere se cada patrocinador apareceu do jeito combinado.</p>
+        {%- for p in s.sobre.paragrafos %}
+        <p>{{ p | markdownify | remove: '<p>' | remove: '</p>' | strip | replace: '<strong>', '<span class="hl">' | replace: '</strong>', '</span>' }}</p>
+        {%- endfor %}
       </div>
-      <p class="formacao rv d3"><b>Formação</b> Comunicação Institucional na UFPR <span>2020 a 2023</span></p>
+      {%- if s.sobre.formacao != blank %}
+      <p class="formacao rv d3"><b>Formação</b> {{ s.sobre.formacao | escape }} <span>{{ s.sobre.formacao_periodo | escape }}</span></p>
+      {%- endif %}
     </div>
   </div>
 </section>
@@ -446,182 +460,119 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
 <section class="terr" aria-labelledby="terr-t">
   <div class="wrap">
     <div class="terr-head">
-      <h2 class="h-l rv" id="terr-t">Onde eu atuo</h2>
-      <p class="rv d1">Os três lugares onde o meu trabalho acontece. Muitas vezes, no mesmo dia.</p>
+      <h2 class="h-l rv" id="terr-t">{{ s.territorios.titulo | escape }}</h2>
+      <p class="rv d1">{{ s.territorios.introducao | escape }}</p>
     </div>
     <ul class="terr-list">
-      <li class="rv">
-        <div class="circ"><img src="img/giu-festival.webp" width="733" height="1100" loading="lazy" alt="Giullia em um festival ao ar livre, com credencial, no fim de tarde"><span class="num" aria-hidden="true">01</span></div>
-        <div><h3>Eventos</h3><p>Bastidores, produção e cobertura real time de shows, festivais e ativações.</p></div>
+      {%- for t in s.territorios.itens %}{% assign d = forloop.index0 | modulo: 4 %}
+      <li class="rv{% if d > 0 %} d{{ d }}{% endif %}">
+        <div class="circ"><img src="{{ t.foto }}" loading="lazy" alt="{{ t.foto_descricao | escape }}"><span class="num" aria-hidden="true">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span></div>
+        <div><h3>{{ t.nome | escape }}</h3><p>{{ t.texto | escape }}</p></div>
       </li>
-      <li class="rv d1">
-        <div class="circ"><img src="img/giu-campo-sq.webp" width="700" height="700" loading="lazy" alt="Giullia à beira do campo de futebol, sorrindo, com camisa de clube"><span class="num" aria-hidden="true">02</span></div>
-        <div><h3>Esporte</h3><p>Reportagem, cobertura de jogos e coletivas e comunicação de clube.</p></div>
-      </li>
-      <li class="rv d2">
-        <div class="circ"><img src="img/giu-copa.webp" width="733" height="1100" loading="lazy" alt="Giullia de jaqueta e credencial em um espaço de evento, sorrindo para a câmera"><span class="num" aria-hidden="true">03</span></div>
-        <div><h3>Imprensa + marcas</h3><p>Assessoria de imprensa, relacionamento com veículos e entregas para patrocinadores.</p></div>
-      </li>
+      {%- endfor %}
     </ul>
   </div>
 </section>
 
-<!-- ================= MÉTRICAS =================
-     EDITAR: os números abaixo são PLACEHOLDERS. Trocar o texto dentro de <span class="v"> pelos dados reais. -->
+<!-- ================= NÚMEROS ================= -->
 <section class="metricas" aria-labelledby="met-t">
   <div class="wrap">
     <div class="top-row">
-      <h2 class="h-m rv" id="met-t">Meus números</h2>
+      <h2 class="h-m rv" id="met-t">{{ s.numeros.titulo | escape }}</h2>
     </div>
     <div class="stats">
-      <div class="stat rv"><span class="n"><span class="br">[</span><span class="v">+120K</span><span class="br">]</span></span><span class="l">Alcance total</span></div>
-      <div class="stat rv d1"><span class="n"><span class="br">[</span><span class="v">48K</span><span class="br">]</span></span><span class="l">Média de views</span></div>
-      <div class="stat rv d2"><span class="n"><span class="br">[</span><span class="v">35+</span><span class="br">]</span></span><span class="l">Eventos acompanhados</span></div>
-      <div class="stat rv d3"><span class="n"><span class="br">[</span><span class="v">15+</span><span class="br">]</span></span><span class="l">Marcas e projetos</span></div>
+      {%- for n in s.numeros.itens %}{% assign d = forloop.index0 | modulo: 4 %}
+      <div class="stat rv{% if d > 0 %} d{{ d }}{% endif %}"><span class="n"><span class="br">[</span><span class="v">{{ n.valor | escape }}</span><span class="br">]</span></span><span class="l">{{ n.rotulo | escape }}</span></div>
+      {%- endfor %}
     </div>
   </div>
 </section>
 
-<!-- ================= ÁREAS DE ATUAÇÃO ================= -->
+<!-- ================= O QUE EU FAÇO ================= -->
 <section class="areas" aria-labelledby="areas-t">
   <div class="wrap">
     <div class="head">
-      <h2 class="h-l rv" id="areas-t">O que eu faço.</h2>
-      <p class="lead rv d1">Assessoria, conteúdo e cobertura para eventos, clubes e marcas.</p>
+      <h2 class="h-l rv" id="areas-t">{{ s.servicos.titulo | escape }}</h2>
+      <p class="lead rv d1">{{ s.servicos.introducao | escape }}</p>
     </div>
     <ol class="area-list">
-      <li class="rv"><span class="i">01</span><h3>Assessoria de imprensa <span class="sub">relações com a imprensa</span></h3><p>Criação de pautas e releases, relacionamento com veículos e jornalistas e atendimento à imprensa durante os eventos.</p></li>
-      <li class="rv"><span class="i">02</span><h3>Conteúdo digital <span class="sub">content</span></h3><p>Idealização, roteiro, captação e edição de conteúdos para marcas, eventos e projetos.</p></li>
-      <li class="rv"><span class="i">03</span><h3>Real time <span class="sub">cobertura</span></h3><p>Roteirização, captação e publicação de cobertura mobile ao vivo em shows, festivais e ativações.</p></li>
-      <li class="rv"><span class="i">04</span><h3>Esporte <span class="sub">reportagem</span></h3><p>Cobertura de jogos e coletivas, entrevistas e comunicação institucional de clube.</p></li>
-      <li class="rv"><span class="i">05</span><h3>Marcas e patrocinadores <span class="sub">entregas</span></h3><p>Planejamento e execução das entregas de conteúdo para as marcas que patrocinam os eventos.</p></li>
+      {%- for a in s.servicos.itens %}
+      <li class="rv"><span class="i">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span><h3>{{ a.nome | escape }}{% if a.legenda != blank %} <span class="sub">{{ a.legenda | escape }}</span>{% endif %}</h3><p>{{ a.texto | escape }}</p></li>
+      {%- endfor %}
     </ol>
   </div>
 </section>
 
-<!-- ================= PROJETOS / CASES =================
-     EDITAR: todos os cases são PLACEHOLDERS. Substituir textos entre [colchetes], fotos e vídeos. -->
+<!-- ================= PROJETOS ================= -->
 <section class="projetos" id="projetos" aria-labelledby="proj-t">
   <div class="wrap">
     <div class="head">
       <div>
-        <p class="label rv">Projetos</p>
-        <h2 class="h-l rv d1" id="proj-t">Bastidores que<br>viraram história.</h2>
+        <p class="label rv">{{ s.projetos.rotulo | escape }}</p>
+        <h2 class="h-l rv d1" id="proj-t">{{ s.projetos.titulo_linha1 | escape }}{% if s.projetos.titulo_linha2 != blank %}<br>{{ s.projetos.titulo_linha2 | escape }}{% endif %}</h2>
       </div>
       <svg class="scribble rv d2" viewBox="0 0 440 70" aria-hidden="true"><path d="M8 50 C70 24 104 18 118 28 C130 38 88 60 110 54 C140 46 170 16 190 26 C204 36 160 60 186 54 C220 44 250 16 268 26 C282 36 240 60 266 54 C310 42 380 28 432 26"/></svg>
     </div>
+    {%- for c in s.projetos.cases %}
+    {%- case c.formato %}{% when 'horizontal' %}{% assign m = 'm-3' %}{% when 'galeria' %}{% assign m = 'm-2' %}{% when 'tres_verticais' %}{% assign m = 'm-4' %}{% else %}{% assign m = 'm-1' %}{% endcase %}
+    {%- assign cores = 'y,b,' | split: ',' %}{% assign k = 0 %}
 
-    <!-- CASE 01 -->
-    <article class="case">
-      <div class="media m-1 rv">
-        <div class="frame"><img src="img/giu-backstage.webp" width="733" height="1100" loading="lazy" alt="Giullia no backstage de um palco"></div>
+    <article class="case{% assign par = forloop.index0 | modulo: 2 %}{% if par == 1 %} flip{% endif %}">
+      <div class="media {{ m }} rv">
+        {%- for md in c.midias %}
+        {%- if md.foto != blank %}
+        <div class="frame"><img src="{{ md.foto }}" loading="lazy" alt="{{ md.descricao | escape }}"></div>
+        {%- else %}{% assign ci = k | modulo: 3 %}{% assign cor = cores[ci] %}{% assign k = k | plus: 1 %}
+        <div class="frame ph-tile{% if cor != blank %} {{ cor }}{% endif %}"><span>{{ md.texto_sem_foto | escape }}</span></div>
+        {%- endif %}
+        {%- endfor %}
       </div>
       <div class="rv d1">
-        <div class="case-no"><span class="c">01</span><span class="label">Case</span></div>
-        <h3>[NOME DO PROJETO]</h3>
-        <p class="client">[MARCA / CLIENTE]</p>
-        <div class="cats"><span>Assessoria</span><span>Evento</span><span>Conteúdo</span></div>
+        <div class="case-no"><span class="c">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span><span class="label">Case</span></div>
+        <h3>{{ c.titulo | escape }}</h3>
+        {%- if c.cliente != blank %}
+        <p class="client">{{ c.cliente | escape }}</p>
+        {%- endif %}
+        <div class="cats">{% for cat in c.categorias %}<span>{{ cat | escape }}</span>{% endfor %}</div>
         <dl>
-          <div><dt>Contexto</dt><dd><span class="ph">[INSERIR BREVE CONTEXTO DO PROJETO]</span></dd></div>
-          <div><dt>Meu papel</dt><dd><span class="ph">[INSERIR O QUE A GIULLIA FEZ]</span></dd></div>
-          <div><dt>Entregas</dt><dd><span class="ph">[ASSESSORIA]</span> <span class="ph">[COBERTURA]</span> <span class="ph">[CONTEÚDO]</span> <span class="ph">[RELACIONAMENTO]</span></dd></div>
-          <div><dt>Resultado</dt><dd><span class="ph">[INSERIR RESULTADO OU MÉTRICA]</span></dd></div>
+          {%- for dt in c.detalhes %}
+          <div><dt>{{ dt.rotulo | escape }}</dt><dd>{% if dt.texto contains '[' %}{% assign partes = dt.texto | split: '] ' %}{% for pt in partes %}<span class="ph">{{ pt | escape }}{% unless forloop.last %}]{% endunless %}</span>{% unless forloop.last %} {% endunless %}{% endfor %}{% else %}{{ dt.texto | markdownify | remove: '<p>' | remove: '</p>' | strip }}{% endif %}</dd></div>
+          {%- endfor %}
         </dl>
       </div>
     </article>
-
-    <!-- CASE 02 -->
-    <article class="case flip">
-      <div class="media m-2 rv">
-        <div class="frame"><img src="img/giu-joinha.webp" width="733" height="1100" loading="lazy" alt="Giullia comemorando com joinha em um festival"></div>
-        <div class="frame ph-tile y"><span>[Inserir foto 02]</span></div>
-        <div class="frame ph-tile b"><span>[Inserir foto 03]</span></div>
-      </div>
-      <div class="rv d1">
-        <div class="case-no"><span class="c">02</span><span class="label">Case</span></div>
-        <h3>[NOME DO EVENTO]</h3>
-        <p class="client">[MARCA / PRODUTORA]</p>
-        <div class="cats"><span>Eventos</span><span>Cobertura real time</span></div>
-        <dl>
-          <div><dt>Contexto</dt><dd><span class="ph">[INSERIR CONTEXTO]</span></dd></div>
-          <div><dt>O que fiz</dt><dd><span class="ph">[INSERIR ATUAÇÃO]</span></dd></div>
-          <div><dt>Resultado</dt><dd><span class="ph">[INSERIR RESULTADO]</span></dd></div>
-        </dl>
-      </div>
-    </article>
-
-    <!-- CASE 03 -->
-    <article class="case">
-      <div class="media m-3 rv">
-        <div class="frame"><img src="img/giu-campo.webp" width="1100" height="733" loading="lazy" alt="Giullia à beira do campo de futebol"></div>
-      </div>
-      <div class="rv d1">
-        <div class="case-no"><span class="c">03</span><span class="label">Case</span></div>
-        <h3>[PROJETO ESPORTIVO]</h3>
-        <p class="client">[CLUBE / MARCA]</p>
-        <div class="cats"><span>Comunicação esportiva</span></div>
-        <dl>
-          <div><dt>Contexto</dt><dd><span class="ph">[INSERIR CONTEXTO]</span></dd></div>
-          <div><dt>O que fiz</dt><dd><span class="ph">[INSERIR ATUAÇÃO EM CAMPO, ENTREVISTAS E BASTIDORES]</span></dd></div>
-          <div><dt>Resultado</dt><dd><span class="ph">[INSERIR RESULTADO]</span></dd></div>
-        </dl>
-      </div>
-    </article>
-
-    <!-- CASE 04 -->
-    <article class="case flip">
-      <div class="media m-4 rv">
-        <div class="frame ph-tile y"><span>[Inserir peça 01]</span></div>
-        <div class="frame ph-tile b"><span>[Inserir vídeo]</span></div>
-        <div class="frame ph-tile"><span>[Inserir peça 02]</span></div>
-      </div>
-      <div class="rv d1">
-        <div class="case-no"><span class="c">04</span><span class="label">Case</span></div>
-        <h3>[PROJETO DE MARCA]</h3>
-        <p class="client">[MARCA]</p>
-        <div class="cats"><span>Conteúdo</span><span>Estratégia digital</span></div>
-        <dl>
-          <div><dt>Contexto</dt><dd><span class="ph">[INSERIR CONTEXTO]</span></dd></div>
-          <div><dt>Entregas</dt><dd><span class="ph">[INSERIR VÍDEOS E PEÇAS]</span></dd></div>
-          <div><dt>Resultado</dt><dd><span class="ph">[INSERIR RESULTADO]</span></dd></div>
-        </dl>
-      </div>
-    </article>
+    {%- endfor %}
   </div>
 </section>
 
-<!-- ================= VÍDEOS =================
-     EDITAR: trocar href="#" pelo link do vídeo (Reels/TikTok) e a imagem pela capa real. -->
+<!-- ================= VÍDEOS ================= -->
 <section class="videos" id="videos" aria-labelledby="vid-t">
   <div class="wrap">
     <div class="head">
-      <h2 class="h-l rv" id="vid-t">Onde acontece, <span class="y">eu estou.</span></h2>
-      <p class="rv d1">Coberturas, bastidores e conteúdos para marcas, captados durante o evento e publicados em tempo real.</p>
+      <h2 class="h-l rv" id="vid-t">{{ s.videos.titulo | escape }}{% if s.videos.titulo_destaque != blank %} <span class="y">{{ s.videos.titulo_destaque | escape }}</span>{% endif %}</h2>
+      <p class="rv d1">{{ s.videos.introducao | escape }}</p>
     </div>
     <ul class="reel">
-      <li class="rv"><a class="vcard" href="#" aria-label="Vídeo 01, inserir vídeo"><img src="img/giu-festival.webp" width="733" height="1100" loading="lazy" alt=""><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span><span class="info"><b>[Vídeo 01]</b><span>Inserir vídeo aqui</span><em>Cobertura de evento</em></span></a></li>
-      <li class="rv d1"><a class="vcard" href="#" aria-label="Vídeo 02, inserir vídeo"><img src="img/giu-backstage.webp" width="733" height="1100" loading="lazy" alt=""><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span><span class="info"><b>[Vídeo 02]</b><span>Inserir vídeo aqui</span><em>Bastidores</em></span></a></li>
-      <li class="rv d2"><a class="vcard" href="#" aria-label="Vídeo 03, inserir vídeo"><img src="img/giu-campo-sq.webp" width="700" height="700" loading="lazy" alt=""><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span><span class="info"><b>[Vídeo 03]</b><span>Inserir vídeo aqui</span><em>Esporte</em></span></a></li>
-      <li class="rv d3"><a class="vcard" href="#" aria-label="Vídeo 04, inserir vídeo"><img src="img/giu-copa.webp" width="733" height="1100" loading="lazy" alt=""><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span><span class="info"><b>[Vídeo 04]</b><span>Inserir vídeo aqui</span><em>Conteúdo para marca</em></span></a></li>
+      {%- for v in s.videos.itens %}{% assign d = forloop.index0 | modulo: 4 %}
+      <li class="rv{% if d > 0 %} d{{ d }}{% endif %}"><a class="vcard" href="{% if v.link != blank %}{{ v.link | strip }}{% else %}#{% endif %}"{% if v.link != blank %} target="_blank" rel="noopener"{% endif %} aria-label="{{ v.titulo | escape }}, {{ v.texto | escape }}">{% if v.capa != blank %}<img src="{{ v.capa }}" loading="lazy" alt="">{% endif %}<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span><span class="info"><b>{{ v.titulo | escape }}</b><span>{{ v.texto | escape }}</span>{% if v.etiqueta != blank %}<em>{{ v.etiqueta | escape }}</em>{% endif %}</span></a></li>
+      {%- endfor %}
     </ul>
   </div>
 </section>
 
-<!-- ================= MARCAS =================
-     EDITAR: substituir cada [MARCA] pelo logo (img) ou nome real. -->
+<!-- ================= MARCAS ================= -->
 <section class="marcas" id="marcas" aria-labelledby="marcas-t">
   <div class="wrap">
-    <p class="label rv">Quem já passou por aqui</p>
-    <h2 class="h-l rv d1" id="marcas-t">Marcas, projetos e histórias que já passaram por mim.</h2>
+    <p class="label rv">{{ s.marcas.rotulo | escape }}</p>
+    <h2 class="h-l rv d1" id="marcas-t">{{ s.marcas.titulo | escape }}</h2>
     <ul class="logos rv d2">
-      <li><div><b>[MARCA 01]</b><small>inserir logo</small></div></li>
-      <li><div><b>[MARCA 02]</b><small>inserir logo</small></div></li>
-      <li><div><b>[MARCA 03]</b><small>inserir logo</small></div></li>
-      <li><div><b>[MARCA 04]</b><small>inserir logo</small></div></li>
-      <li><div><b>[MARCA 05]</b><small>inserir logo</small></div></li>
-      <li><div><b>[MARCA 06]</b><small>inserir logo</small></div></li>
-      <li><div><b>[MARCA 07]</b><small>inserir logo</small></div></li>
-      <li><div><b>[MARCA 08]</b><small>inserir logo</small></div></li>
+      {%- for b in s.marcas.itens %}
+      {%- if b.logo != blank %}
+      <li><img src="{{ b.logo }}" loading="lazy" alt="{{ b.nome | escape }}"></li>
+      {%- else %}
+      <li><div><b>{{ b.nome | escape }}</b>{% if b.nome contains '[' %}<small>inserir logo</small>{% endif %}</div></li>
+      {%- endif %}
+      {%- endfor %}
     </ul>
   </div>
 </section>
@@ -630,69 +581,91 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
 <section class="traj" aria-labelledby="traj-t">
   <div class="wrap grid">
     <div class="side">
-      <p class="label rv">Trajetória</p>
-      <h2 class="h-l rv d1" id="traj-t">Do campo<br><span class="thin">ao palco.</span></h2>
-      <p class="rv d2">Trajetória completa no <a href="https://www.linkedin.com/in/giullia-pimentel-grzybowski-446011208/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+      <p class="label rv">{{ s.trajetoria.rotulo | escape }}</p>
+      <h2 class="h-l rv d1" id="traj-t">{{ s.trajetoria.titulo | escape }}{% if s.trajetoria.titulo_fino != blank %}<br><span class="thin">{{ s.trajetoria.titulo_fino | escape }}</span>{% endif %}</h2>
+      {%- if s.contato.linkedin != blank %}
+      <p class="rv d2">{{ s.trajetoria.texto_link | escape }} <a href="{{ s.contato.linkedin | strip }}" target="_blank" rel="noopener">LinkedIn</a>.</p>
+      {%- endif %}
     </div>
     <ol class="tl">
-      <li class="rv"><span class="yr"><span class="now-dot" aria-hidden="true"></span>desde 2026</span><div><h3>CWB Brasil Group</h3><p>Assessora de imprensa e conteúdo digital</p></div></li>
-      <li class="rv"><span class="yr"><span class="now-dot" aria-hidden="true"></span>desde 2019</span><div><h3>Clube SE Tanguá</h3><p>Superintendente de Comunicação</p></div></li>
-      <li class="rv"><span class="yr">2025</span><div><h3>Prefeitura Municipal de Almirante Tamandaré</h3><p>Repórter e Redatora</p></div></li>
-      <li class="rv"><span class="yr">2023 a 2025</span><div><h3>Vivan Atacado de Confecções</h3><p>Gerente de Marketing</p></div></li>
-      <li class="rv"><span class="yr">2022 a 2024</span><div><h3>Invicta Press</h3><p>Repórter esportiva credenciada</p></div></li>
-      <li class="rv"><span class="yr">2022 a 2023</span><div><h3>Studio Lupie</h3><p>Social Media</p></div></li>
-      <li class="rv"><span class="yr">2020</span><div><h3>Mercado do Futebol</h3><p>Colunista esportiva</p></div></li>
+      {%- for t in s.trajetoria.itens %}
+      <li class="rv"><span class="yr">{% if t.atual %}<span class="now-dot" aria-hidden="true"></span>{% endif %}{{ t.periodo | escape }}</span><div><h3>{{ t.empresa | escape }}</h3><p>{{ t.cargo | escape }}</p></div></li>
+      {%- endfor %}
     </ol>
   </div>
 </section>
 
 <!-- ================= CONTATO ================= -->
+{%- assign ct = s.contato -%}
+{%- assign zap = ct.whatsapp | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '+' -%}
 <section class="contato" id="contato" aria-labelledby="cont-t">
   <div class="wrap">
     <div class="grid">
       <div>
-        <p class="label rv">Contato</p>
-        <h2 class="rv d1" id="cont-t">Se está acontecendo, <span class="thin">dá para contar.</span></h2>
+        <p class="label rv">{{ ct.rotulo | escape }}</p>
+        <h2 class="rv d1" id="cont-t">{{ ct.titulo | escape }}{% if ct.titulo_fino != blank %} <span class="thin">{{ ct.titulo_fino | escape }}</span>{% endif %}</h2>
         <div class="who rv d2">
-          <p style="margin:0;max-width:34ch;width:100%">Vamos contar essa história juntos? Me manda um oi por aqui.</p>
-          <b>Giullia Pimentel</b><span class="loc">Curitiba, PR</span>
-          <a class="btn btn-k" href="https://wa.me/5541996967504" target="_blank" rel="noopener">Chamar no WhatsApp <span class="arr" aria-hidden="true">→</span></a>
+          {%- if ct.convite != blank %}
+          <p style="margin:0;max-width:34ch;width:100%">{{ ct.convite | escape }}</p>
+          {%- endif %}
+          <b>{{ ct.nome | escape }}</b><span class="loc">{{ ct.cidade | escape }}</span>
+          {%- if zap != blank %}
+          <a class="btn btn-k" href="https://wa.me/{{ zap }}" target="_blank" rel="noopener">{{ ct.botao_whatsapp | escape }} <span class="arr" aria-hidden="true">→</span></a>
+          {%- endif %}
         </div>
       </div>
       <div class="circle-photo rv d2">
-        <img src="img/giu-joinha.webp" width="733" height="1100" loading="lazy" alt="Giullia fazendo joinha com as duas mãos, empolgada, em um festival">
+        <img src="{{ ct.foto }}" loading="lazy" alt="{{ ct.foto_descricao | escape }}">
         <span class="dot" aria-hidden="true"></span>
       </div>
     </div>
     <ul class="contact-list rv d3">
-      <li><span class="label">Email</span><a href="mailto:giullia_pimentel@hotmail.com">giullia_pimentel@hotmail.com</a></li>
-      <li><span class="label">WhatsApp</span><a href="https://wa.me/5541996967504" target="_blank" rel="noopener">(41) 99696 7504</a></li>
-      <li><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/giullia-pimentel-grzybowski-446011208/" target="_blank" rel="noopener">Giullia Pimentel</a></li>
-      <li><span class="label">Instagram</span><a href="https://www.instagram.com/agiupimentel/" target="_blank" rel="noopener">@agiupimentel</a></li>
-      <li><span class="label">TikTok</span><a href="https://www.tiktok.com/@agiupimentel" target="_blank" rel="noopener">@agiupimentel</a></li>
-      <li><span class="label">Base</span><span style="font-weight:700;font-size:clamp(17px,1.5vw,20px)">Curitiba / PR</span></li>
+      {%- if ct.email != blank %}
+      <li><span class="label">Email</span><a href="mailto:{{ ct.email | strip }}">{{ ct.email | escape }}</a></li>
+      {%- endif %}
+      {%- if zap != blank %}
+      <li><span class="label">WhatsApp</span><a href="https://wa.me/{{ zap }}" target="_blank" rel="noopener">({{ zap | slice: 2, 2 }}) {{ zap | slice: 4, 5 }} {{ zap | slice: 9, 4 }}</a></li>
+      {%- endif %}
+      {%- if ct.linkedin != blank %}
+      <li><span class="label">LinkedIn</span><a href="{{ ct.linkedin | strip }}" target="_blank" rel="noopener">{{ ct.linkedin_texto | escape }}</a></li>
+      {%- endif %}
+      {%- if ct.instagram != blank %}{% assign ig = ct.instagram | remove: '@' | strip %}
+      <li><span class="label">Instagram</span><a href="https://www.instagram.com/{{ ig }}/" target="_blank" rel="noopener">@{{ ig }}</a></li>
+      {%- endif %}
+      {%- if ct.tiktok != blank %}{% assign tt = ct.tiktok | remove: '@' | strip %}
+      <li><span class="label">TikTok</span><a href="https://www.tiktok.com/@{{ tt }}" target="_blank" rel="noopener">@{{ tt }}</a></li>
+      {%- endif %}
+      {%- if ct.base != blank %}
+      <li><span class="label">Base</span><span style="font-weight:700;font-size:clamp(17px,1.5vw,20px)">{{ ct.base | escape }}</span></li>
+      {%- endif %}
     </ul>
   </div>
 </section>
 </main>
 
-<!-- ================= FOOTER ================= -->
+<!-- ================= RODAPÉ ================= -->
 <footer>
   <div class="wrap">
-    <p class="lockup"><span class="g">Giullia<br>Pimentel</span></p>
+    <p class="lockup"><span class="g">{{ s.inicio.nome | escape }}<br>{{ s.inicio.sobrenome | escape }}</span></p>
     <nav aria-label="Rodapé">
       <ul>
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#projetos">Projetos</a></li>
         <li><a href="#videos">Vídeos</a></li>
         <li><a href="#contato">Contato</a></li>
-        <li><a href="https://www.linkedin.com/in/giullia-pimentel-grzybowski-446011208/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://www.instagram.com/agiupimentel/" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="https://www.tiktok.com/@agiupimentel" target="_blank" rel="noopener">TikTok</a></li>
+        {%- if ct.linkedin != blank %}
+        <li><a href="{{ ct.linkedin | strip }}" target="_blank" rel="noopener">LinkedIn</a></li>
+        {%- endif %}
+        {%- if ct.instagram != blank %}
+        <li><a href="https://www.instagram.com/{{ ig }}/" target="_blank" rel="noopener">Instagram</a></li>
+        {%- endif %}
+        {%- if ct.tiktok != blank %}
+        <li><a href="https://www.tiktok.com/@{{ tt }}" target="_blank" rel="noopener">TikTok</a></li>
+        {%- endif %}
       </ul>
     </nav>
-    <p class="tag">Comunicação acontece <span class="hl">agora.</span></p>
-    <p class="small"><span>© Giullia Pimentel Grzybowski</span><span>Curitiba, PR</span></p>
+    <p class="tag">{{ s.rodape.frase | escape }}{% if s.rodape.destaque != blank %} <span class="hl">{{ s.rodape.destaque | escape }}</span>{% endif %}</p>
+    <p class="small"><span>{{ s.rodape.assinatura | escape }}</span><span>{{ ct.cidade | escape }}</span></p>
   </div>
 </footer>
 
@@ -719,7 +692,7 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
   dr.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ dr.classList.remove('open'); btn.setAttribute('aria-expanded',false); document.body.style.overflow=''; }); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape' && dr.classList.contains('open')) setOpen(false); });
 
-  // vídeos placeholder: evita pular para o topo
+  // vídeos sem link: evita pular para o topo
   document.querySelectorAll('.vcard[href="#"]').forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); }); });
 })();
 </script>
