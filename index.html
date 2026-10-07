@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giullia Pimentel | Assessoria, conteúdo e eventos</title>
+<meta name="description" content="Giullia Pimentel, a Giu. Assessora de imprensa, criadora de conteúdo e estrategista de marcas no digital. Eventos, futebol e cobertura real time em Curitiba.">
+<meta property="og:title" content="Giullia Pimentel | Assessoria, conteúdo e eventos">
+<meta property="og:description" content="Ela está onde as coisas acontecem. E sabe contar o que está acontecendo.">
+<meta property="og:type" content="website">
+<!-- EDITAR: quando o site tiver domínio, preencher og:url e og:image com endereços completos -->
+<meta property="og:image" content="img/giu-credencial.webp">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;0,800;0,900;1,100;1,200;1,300&family=Jost:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   Paleta oficial da marca Giullia — não adicionar cores
+   ========================================================= */
+:root{
+  --amarelo:#FFEB99;
+  --azul:#99C5FF;
+  --branco:#FFFFFF;
+  --preto:#000000;
+  --off:#F3F0EB;
+  --sans:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --label:"Jost","Inter",sans-serif;
+  --gutter:clamp(16px,4vw,56px);
+  --max:1320px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+/* O site é sempre claro/escuro por seção; não inverte em modo escuro do sistema */
+:root:not([data-theme="light"]){color-scheme:light}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--off:#F3F0EB}}
+:root[data-theme="dark"]{--off:#F3F0EB}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--off);color:var(--preto);font-family:var(--sans);font-size:17px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--azul);outline-offset:3px;border-radius:4px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+section{position:relative}
+
+/* ---------- tipografia ---------- */
+.label{font-family:var(--label);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.thin{font-weight:200;font-style:italic;letter-spacing:-.01em}
+.h-xl{font-weight:900;letter-spacing:-.045em;line-height:.9;margin:0}
+.h-l{font-weight:800;letter-spacing:-.035em;line-height:1;font-size:clamp(38px,6vw,84px);margin:0}
+.h-m{font-weight:800;letter-spacing:-.025em;line-height:1.05;font-size:clamp(26px,3vw,40px);margin:0}
+.lead{font-size:clamp(18px,1.6vw,21px);line-height:1.5}
+.hl{background:linear-gradient(transparent 58%,var(--amarelo) 58%,var(--amarelo) 92%,transparent 92%);padding:0 .08em}
+.hl-azul{background:linear-gradient(transparent 58%,var(--azul) 58%,var(--azul) 92%,transparent 92%);padding:0 .08em}
+
+/* placeholders: tudo entre colchetes deve ser trocado */
+.ph{font-family:var(--label);font-weight:600;font-size:.92em;letter-spacing:.02em;background:var(--branco);border:1.5px dashed var(--preto);border-radius:6px;padding:.05em .45em;white-space:normal}
+.chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--label);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:999px;background:var(--branco);color:var(--preto)}
+
+/* ---------- header ---------- */
+.top{position:fixed;inset:14px 0 auto;z-index:50;pointer-events:none}
+.top .bar{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:calc(var(--max) - 2*var(--gutter));margin:0 var(--gutter);background:var(--off);border-radius:999px;padding:8px 8px 8px 22px;box-shadow:0 8px 30px rgba(0,0,0,.12)}
+@media (min-width:1320px){.top .bar{margin:0 auto}}
+.brand{text-decoration:none;font-weight:900;letter-spacing:-.04em;font-size:22px;display:flex;align-items:baseline;gap:6px}
+.brand .thin{font-size:15px}
+.nav{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.nav a{display:block;text-decoration:none;font-weight:600;font-size:15px;padding:10px 16px;border-radius:999px;transition:background .2s}
+.nav a:hover{background:var(--amarelo)}
+.nav .cta a{background:var(--preto);color:var(--branco)}
+.nav .cta a:hover{background:var(--azul);color:var(--preto)}
+.menu-btn{display:none;border:0;background:var(--preto);color:var(--branco);font:600 15px var(--sans);padding:12px 18px;border-radius:999px;cursor:pointer;min-height:44px}
+@media (max-width:860px){
+  .nav{display:none}
+  .menu-btn{display:block}
+}
+.drawer{position:fixed;inset:0;z-index:60;background:var(--preto);color:var(--branco);display:flex;flex-direction:column;padding:28px var(--gutter);transform:translateY(-100%);transition:transform .45s var(--ease);visibility:hidden}
+.drawer.open{transform:none;visibility:visible}
+.drawer .close{align-self:flex-end;border:0;background:var(--amarelo);color:var(--preto);font:700 15px var(--sans);padding:12px 18px;border-radius:999px;cursor:pointer}
+.drawer ul{list-style:none;padding:0;margin:auto 0}
+.drawer a{display:block;text-decoration:none;font-weight:900;letter-spacing:-.04em;font-size:clamp(44px,13vw,72px);line-height:1.1;color:var(--branco)}
+.drawer a:hover,.drawer a:focus-visible{color:var(--amarelo)}
+.drawer .foot{font-family:var(--label);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amarelo)}
+
+/* ---------- HERO ---------- */
+.hero{background:var(--preto);color:var(--branco);min-height:100svh;overflow:hidden;display:flex;align-items:center}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,4vw,64px);width:100%;align-items:center;padding-top:120px;padding-bottom:70px;position:relative}
+.hero-text{position:relative;z-index:3}
+.hero .hi{font-weight:200;font-style:italic;font-size:clamp(20px,1.8vw,26px);margin:0 0 6px;color:var(--branco)}
+.hero h1{margin:0}
+.hero .name{display:block;color:var(--amarelo);font-weight:900;letter-spacing:-.055em;line-height:.88;font-size:clamp(70px,9.6vw,156px);margin-left:-.05em}
+.hero .now{display:block;font-weight:100;font-style:italic;font-size:clamp(30px,3.8vw,56px);line-height:1;color:var(--branco);margin:.1em 0 0 .08em;letter-spacing:-.02em}
+.hero .tags{display:flex;flex-wrap:wrap;gap:6px 26px;margin:28px 0 0;padding:0;list-style:none;font-weight:200;font-style:italic;font-size:clamp(20px,1.9vw,28px);color:var(--amarelo)}
+.hero .role{display:block;font-weight:700;font-size:clamp(18px,1.5vw,21px);line-height:1.35;max-width:34ch;margin-top:26px;color:var(--branco)}
+.hero .bio{max-width:46ch;margin:12px 0 0;font-size:17px;line-height:1.6;color:var(--branco)}
+.hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;font-size:17px;padding:16px 24px;border-radius:999px;min-height:52px;transition:transform .25s var(--ease),background .25s,color .25s}
+.btn .arr{display:inline-block;transition:transform .25s var(--ease)}
+.btn:hover .arr{transform:translateX(5px)}
+.btn-y{background:var(--amarelo);color:var(--preto)}
+.btn-y:hover{background:var(--branco)}
+.btn-w{background:transparent;color:var(--branco);box-shadow:inset 0 0 0 1.5px var(--branco)}
+.btn-w:hover{background:var(--branco);color:var(--preto)}
+.btn-k{background:var(--preto);color:var(--branco)}
+.btn-k:hover{background:var(--branco);color:var(--preto)}
+.loc{font-family:var(--label);font-weight:700;letter-spacing:.14em;font-size:13px;text-transform:uppercase}
+
+/* tira de fotos em movimento (estilo cabine de fotos) */
+.strips{position:relative;height:min(78vh,720px);display:flex;justify-content:center;align-items:center}
+.strip{position:relative;background:var(--branco);border-radius:22px;padding:12px;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.strip .win{height:100%;overflow:hidden;border-radius:12px}
+.strip .roll{display:flex;flex-direction:column;animation:rollY 34s linear infinite}
+.strip .roll img{width:100%;aspect-ratio:3/4;object-fit:cover;margin-bottom:10px;border-radius:6px}
+.strip.a{width:min(300px,26vw);height:100%;transform:rotate(3.5deg);z-index:2}
+.strip.b{position:absolute;width:min(190px,16vw);height:72%;left:-4%;top:14%;transform:rotate(-7deg);background:var(--azul);z-index:1}
+.strip.b .roll{animation-duration:46s;animation-direction:reverse}
+.strips:hover .roll{animation-play-state:paused}
+@keyframes rollY{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@keyframes rollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.live{position:absolute;z-index:3;left:22px;top:22px;display:inline-flex;align-items:center;gap:8px;background:var(--amarelo);color:var(--preto);font-family:var(--label);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px 7px 10px;border-radius:999px}
+.live i{width:9px;height:9px;border-radius:50%;background:var(--preto);animation:blink 1.4s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.caption{position:absolute;z-index:3;right:-10px;bottom:26px;background:var(--preto);color:var(--branco);font-weight:300;font-style:italic;font-size:17px;padding:9px 16px;border-radius:999px;box-shadow:0 0 0 2px var(--branco)}
+@media (max-width:860px){
+  .hero{min-height:auto}
+  .hero .wrap{grid-template-columns:minmax(0,1fr);padding-top:104px;padding-bottom:64px}
+  .hero-text,.strips{min-width:0}
+  .hero .name{font-size:clamp(60px,19vw,120px)}
+  .hero .tags{gap:4px 16px;font-size:21px}
+  .strips{height:auto;margin:10px calc(-1*var(--gutter)) 0;display:block}
+  .strip.b{display:none}
+  .strip.a{width:auto;height:auto;transform:rotate(-2.5deg);margin:24px -20px 10px;border-radius:18px;padding:10px}
+  .strip.a .win{height:auto}
+  .strip.a .roll{flex-direction:row;width:max-content;animation-name:rollX;animation-duration:30s}
+  .strip.a .roll img{width:150px;margin:0 8px 0 0}
+  .live{left:34px;top:14px}
+  .caption{right:34px;bottom:-12px;font-size:15px}
+}
+
+/* ---------- rabisco (um por composição) ---------- */
+.scribble{display:block;overflow:visible}
+.scribble path{fill:none;stroke:var(--amarelo);stroke-width:9;stroke-linecap:round;stroke-linejoin:round}
+.js .scribble path{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 1.3s var(--ease) .2s}
+.js .in .scribble path,.js .scribble.in path{stroke-dashoffset:0}
+
+/* ---------- SOBRE ---------- */
+.sobre{padding:clamp(110px,14vw,190px) 0 clamp(80px,10vw,140px)}
+.sobre .grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(36px,6vw,96px);align-items:center}
+.circle-photo{position:relative;aspect-ratio:1;border-radius:50%;background:var(--branco);padding:clamp(10px,1.4vw,18px);max-width:520px}
+.circle-photo img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.circle-photo .dot{position:absolute;width:24%;aspect-ratio:1;border-radius:50%;background:var(--azul);border:clamp(6px,.9vw,12px) solid var(--branco);right:-2%;top:4%}
+.sobre .kicker{margin-bottom:20px}
+.sobre h2{max-width:15ch}
+.sobre .scribble{width:min(300px,60%);margin:18px 0 28px}
+.sobre p{max-width:56ch;margin:0 0 1.05em}
+.sobre .formacao{margin-top:30px;padding-top:18px;border-top:1.5px solid var(--preto);display:flex;flex-wrap:wrap;gap:6px 18px;font-size:15px}
+.sobre .formacao b{font-family:var(--label);letter-spacing:.12em;text-transform:uppercase;font-size:12.5px}
+@media (max-width:860px){.sobre .grid{grid-template-columns:1fr}.circle-photo{max-width:340px;width:84%}}
+
+/* ---------- TERRITÓRIOS ---------- */
+.terr{background:var(--azul);padding:clamp(80px,10vw,140px) 0}
+.terr-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px 40px;margin-bottom:clamp(44px,6vw,80px)}
+.terr-head p{max-width:38ch;margin:0}
+.terr-list{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,56px);list-style:none;margin:0;padding:0}
+.terr-list li:nth-child(2){margin-top:clamp(0px,7vw,110px)}
+.terr-list li:nth-child(3){margin-top:clamp(0px,2.5vw,36px)}
+.terr .circ{aspect-ratio:1;border-radius:50%;background:var(--branco);padding:clamp(8px,1vw,14px);margin-bottom:26px;position:relative}
+.terr .circ img{width:100%;height:100%;object-fit:cover;border-radius:50%;transition:transform .6s var(--ease)}
+.terr li:hover .circ img{transform:scale(1.04)}
+.terr .num{position:absolute;left:0;top:0;width:28%;aspect-ratio:1;border-radius:50%;background:var(--amarelo);border:6px solid var(--branco);display:grid;place-items:center;font-family:var(--label);font-weight:700;font-size:clamp(15px,1.4vw,20px)}
+.terr h3{font-weight:900;letter-spacing:-.03em;font-size:clamp(30px,3.2vw,46px);line-height:1;margin:0 0 12px;text-transform:uppercase}
+.terr li p{margin:0;max-width:30ch}
+@media (max-width:860px){
+  .terr-list{grid-template-columns:1fr;gap:56px}
+  .terr-list li{display:grid;grid-template-columns:42% 1fr;gap:22px;align-items:center;margin-top:0!important}
+  .terr-list li:nth-child(even){grid-template-columns:1fr 42%}
+  .terr-list li:nth-child(even) .circ{order:2}
+  .terr .circ{margin:0}
+}
+@media (max-width:480px){.terr-list li,.terr-list li:nth-child(even){grid-template-columns:1fr}.terr-list li:nth-child(even) .circ{order:0}.terr .circ{width:72%}}
+
+/* ---------- MÉTRICAS ---------- */
+.metricas{background:var(--amarelo);padding:clamp(72px,9vw,120px) 0}
+.metricas .top-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px;align-items:end;margin-bottom:clamp(36px,5vw,64px)}
+.metricas .note{display:inline-flex;gap:8px;align-items:center;font-size:14px;background:var(--branco);border-radius:999px;padding:8px 14px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--preto)}
+.stat{padding:26px 22px 8px 0}
+.stat+.stat{border-left:2px solid var(--preto);padding-left:22px}
+.stat .n{display:block;font-weight:900;letter-spacing:-.05em;line-height:1;font-size:clamp(52px,6.2vw,92px)}
+.stat .n .br{font-weight:100;font-style:normal;letter-spacing:0}
+.stat .l{display:block;margin-top:10px;font-family:var(--label);font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:13px}
+@media (max-width:860px){.stat{min-width:0}.stat .n{font-size:clamp(34px,10.5vw,70px)}.stats{grid-template-columns:1fr 1fr}.stat:nth-child(3){border-left:0;padding-left:0}.stat:nth-child(n+3){border-top:2px solid var(--preto)}}
+
+/* ---------- ÁREAS ---------- */
+.areas{padding:clamp(90px,11vw,150px) 0}
+.areas .head{display:grid;grid-template-columns:5fr 7fr;gap:30px 60px;align-items:end;margin-bottom:clamp(36px,5vw,64px)}
+.areas .head p{margin:0;max-width:44ch}
+.area-list{list-style:none;margin:0;padding:0;border-top:2px solid var(--preto)}
+.area-list li{display:grid;grid-template-columns:84px 1fr 1fr;gap:12px 32px;align-items:center;padding:26px 14px;border-bottom:2px solid var(--preto);transition:background .3s var(--ease),padding .3s var(--ease)}
+.area-list li:hover{background:var(--branco);padding-left:24px}
+.area-list .i{width:58px;height:58px;border-radius:50%;background:var(--azul);display:grid;place-items:center;font-family:var(--label);font-weight:700;font-size:17px}
+.area-list li:nth-child(even) .i{background:var(--amarelo)}
+.area-list h3{margin:0;font-weight:800;letter-spacing:-.03em;font-size:clamp(24px,2.6vw,36px);line-height:1.05}
+.area-list p{margin:0;font-size:16px}
+.area-list .sub{display:block;margin-top:6px;font-weight:200;font-style:italic;font-size:.62em;letter-spacing:0}
+.area-list .tags{font-family:var(--label);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-align:right;white-space:nowrap}
+@media (max-width:860px){
+  .areas .head{grid-template-columns:1fr}
+  .area-list li{grid-template-columns:58px 1fr;padding:22px 0}
+  .area-list li:hover{padding-left:0}
+  .area-list p,.area-list .sub{display:block;margin-top:6px;font-weight:200;font-style:italic;font-size:.62em;letter-spacing:0}
+.area-list .tags{grid-column:2}
+  .area-list .sub{display:block;margin-top:6px;font-weight:200;font-style:italic;font-size:.62em;letter-spacing:0}
+.area-list .tags{text-align:left;white-space:normal}
+}
+
+/* ---------- PROJETOS ---------- */
+.projetos{background:var(--branco);padding:clamp(90px,11vw,150px) 0}
+.projetos .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px 40px;margin-bottom:clamp(50px,7vw,96px)}
+.projetos .head .scribble{width:220px}
+.case{display:grid;grid-template-columns:7fr 5fr;gap:clamp(28px,5vw,80px);align-items:center}
+.case+.case{margin-top:clamp(80px,10vw,150px)}
+.case.flip{grid-template-columns:5fr 7fr}
+.case.flip .media{order:2}
+.media{position:relative}
+.frame{position:relative;overflow:hidden;border-radius:18px;background:var(--off)}
+.frame img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.case:hover .frame img{transform:scale(1.035)}
+.frame .chip{position:absolute;left:14px;top:14px;z-index:2}
+.m-1 .frame{aspect-ratio:4/5}
+.m-2{display:grid;grid-template-columns:1.25fr 1fr;gap:14px}
+.m-2 .frame:first-child{grid-row:span 2;aspect-ratio:3/4.4}
+.m-2 .frame.ph-tile{aspect-ratio:1}
+.m-3 .frame{aspect-ratio:3/2}
+.m-4{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:end}
+.m-4 .frame{aspect-ratio:9/16}
+.m-4 .frame:nth-child(2){transform:translateY(-34px)}
+.ph-tile{display:grid;place-items:center;text-align:center;padding:16px;border:2px dashed var(--preto)}
+.ph-tile.y{background:var(--amarelo)}
+.ph-tile.b{background:var(--azul)}
+.ph-tile span{font-family:var(--label);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.case-no{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.case-no .c{width:46px;height:46px;border-radius:50%;background:var(--preto);color:var(--amarelo);display:grid;place-items:center;font-family:var(--label);font-weight:700;font-size:15px}
+.case h3{font-weight:900;letter-spacing:-.035em;font-size:clamp(30px,3.6vw,52px);line-height:1;margin:0 0 8px}
+.case .client{font-weight:200;font-style:italic;font-size:clamp(20px,2vw,26px);margin:0 0 20px}
+.cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.cats span{font-family:var(--label);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;border-radius:999px;background:var(--off)}
+.cats span:first-child{background:var(--amarelo)}
+.case dl{margin:0;display:grid;gap:14px}
+.case dl div{display:grid;grid-template-columns:120px 1fr;gap:12px;padding-top:14px;border-top:1.5px solid var(--preto)}
+.case dt{font-family:var(--label);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding-top:3px}
+.case dd{margin:0;font-size:16px}
+@media (max-width:860px){
+  .case,.case.flip{grid-template-columns:1fr}
+  .case.flip .media{order:0}
+  .case dl div{grid-template-columns:1fr;gap:4px}
+  .m-4 .frame:nth-child(2){transform:none}
+}
+
+/* ---------- VÍDEOS ---------- */
+.videos{background:var(--preto);color:var(--branco);padding:clamp(90px,11vw,150px) 0;overflow:hidden}
+.videos .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px 40px;margin-bottom:clamp(40px,6vw,72px)}
+.videos h2 .y{color:var(--amarelo)}
+.videos .head p{max-width:36ch;margin:0;opacity:.85}
+.reel{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;list-style:none;margin:0;padding:0}
+.reel li:nth-child(even){margin-top:56px}
+.vcard{position:relative;display:block;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:#000;text-decoration:none;color:var(--branco)}
+.vcard img{width:100%;height:100%;object-fit:cover;opacity:.72;transition:transform .8s var(--ease),opacity .4s}
+.vcard:hover img{transform:scale(1.05);opacity:.55}
+.vcard .play{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:var(--amarelo);border:6px solid var(--branco);display:grid;place-items:center;transition:transform .35s var(--ease)}
+.vcard:hover .play{transform:scale(1.1)}
+.vcard .play svg{width:22px;height:22px;margin-left:4px}
+.vcard .info{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.vcard .info b{display:block;font-family:var(--label);letter-spacing:.12em;font-size:13px;text-transform:uppercase;color:var(--amarelo)}
+.vcard .info span{display:block;font-size:15px;margin-top:2px}
+.vcard .info em{display:inline-block;margin-top:8px;font-style:normal;font-family:var(--label);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:var(--branco);color:var(--preto);padding:4px 9px;border-radius:999px}
+@media (max-width:860px){
+  .reel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 calc(-1*var(--gutter));padding:0 var(--gutter) 10px;scrollbar-width:none}
+  .reel::-webkit-scrollbar{display:none}
+  .reel li{flex:0 0 66%;scroll-snap-align:start;margin-top:0!important}
+}
+
+/* ---------- MARCAS ---------- */
+.marcas{padding:clamp(90px,11vw,150px) 0}
+.marcas h2{max-width:18ch;margin-bottom:clamp(40px,6vw,72px)}
+.logos{display:grid;grid-template-columns:repeat(4,1fr);list-style:none;margin:0;padding:0;border-top:1.5px solid var(--preto);border-left:1.5px solid var(--preto)}
+.logos li{aspect-ratio:16/9;display:grid;place-items:center;text-align:center;border-right:1.5px solid var(--preto);border-bottom:1.5px solid var(--preto);padding:16px;transition:background .3s}
+.logos li:hover{background:var(--branco)}
+.logos b{display:block;font-family:var(--label);font-weight:700;letter-spacing:.12em;font-size:clamp(14px,1.3vw,17px)}
+.logos small{display:block;margin-top:4px;font-size:13px;font-weight:200;font-style:italic}
+@media (max-width:640px){.logos{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- TRAJETÓRIA ---------- */
+.traj{background:var(--branco);padding:clamp(90px,11vw,150px) 0}
+.traj .grid{display:grid;grid-template-columns:4fr 8fr;gap:clamp(36px,6vw,96px);align-items:start}
+.traj .side{position:sticky;top:120px}
+.traj .side p{max-width:30ch}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:150px 1fr;gap:6px 30px;padding:22px 0;border-bottom:1.5px solid var(--preto);align-items:baseline}
+.tl li:first-child{border-top:1.5px solid var(--preto)}
+.tl .yr{font-family:var(--label);font-weight:700;font-size:15px;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
+.tl .now-dot{width:12px;height:12px;border-radius:50%;background:var(--amarelo);box-shadow:0 0 0 2px var(--preto);flex:none}
+.tl h3{margin:0;font-weight:800;letter-spacing:-.02em;font-size:clamp(21px,2vw,27px);line-height:1.15}
+.tl p{margin:2px 0 0;font-weight:300;font-style:italic;font-size:17px}
+@media (max-width:860px){.traj .grid{grid-template-columns:1fr}.traj .side{position:static}.tl li{grid-template-columns:1fr}}
+
+/* ---------- CONTATO ---------- */
+.contato{background:var(--amarelo);padding:clamp(90px,11vw,150px) 0 clamp(70px,8vw,110px);overflow:hidden}
+.contato .grid{display:grid;grid-template-columns:8fr 4fr;gap:clamp(30px,5vw,80px);align-items:center}
+.contato h2{font-weight:900;letter-spacing:-.05em;line-height:.92;font-size:clamp(50px,8.4vw,128px);margin:0}
+.contato h2 .thin{font-weight:100}
+.contato .circle-photo{max-width:380px;margin-left:auto}
+.contato .circle-photo .dot{background:var(--azul);left:-4%;right:auto;top:auto;bottom:6%}
+.contact-list{list-style:none;margin:clamp(44px,6vw,80px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--preto)}
+.contact-list li{padding:20px 20px 20px 0}
+.contact-list li:nth-child(3n+2),.contact-list li:nth-child(3n+3){padding-left:20px;border-left:2px solid var(--preto)}
+.contact-list li:nth-child(n+4){border-top:2px solid var(--preto)}
+.contact-list .label{display:block;margin-bottom:6px}
+.contact-list a{font-weight:700;font-size:clamp(17px,1.5vw,20px);text-decoration:none;word-break:break-word;background:linear-gradient(var(--preto),var(--preto)) 0 100%/0 2px no-repeat;transition:background-size .3s var(--ease)}
+.contact-list a:hover{background-size:100% 2px}
+.contato .who{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px 26px;align-items:center}
+.contato .who b{font-weight:800;font-size:20px}
+@media (max-width:860px){
+  .contato .grid{grid-template-columns:1fr}
+  .contato .circle-photo{margin:0;max-width:260px;width:70%}
+  .contact-list{grid-template-columns:1fr}
+  .contact-list li{padding:18px 0!important;border-left:0!important}
+  .contact-list li+li{border-top:2px solid var(--preto)}
+}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--preto);color:var(--branco);padding:clamp(70px,9vw,120px) 0 36px;text-align:center}
+.lockup{display:inline-block;line-height:1}
+.lockup .g{display:block;font-weight:900;letter-spacing:-.055em;color:var(--amarelo);font-size:clamp(56px,12vw,180px);line-height:.9}
+.lockup .n{display:block;font-weight:100;font-style:italic;font-size:clamp(30px,4vw,58px);margin-top:.12em}
+footer nav ul{list-style:none;padding:0;margin:40px 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+footer nav a{display:block;padding:10px 14px;text-decoration:none;font-weight:600;border-radius:999px}
+footer nav a:hover{background:var(--amarelo);color:var(--preto)}
+footer .hl{background:none;color:var(--amarelo);padding:0}
+footer .tag{margin:40px 0 0;font-weight:800;font-size:clamp(20px,2vw,26px);letter-spacing:-.02em}
+footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px}
+
+/* ---------- animação de entrada ---------- */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
+.js .hero .name{opacity:0;transform:translateY(.25em);animation:up 1s var(--ease) .1s forwards}
+.js .hero .now{opacity:0;animation:fade 1s var(--ease) .55s forwards}
+.js .strips{opacity:0;transform:translateY(30px);animation:up 1.1s var(--ease) .3s forwards}
+@keyframes up{to{opacity:1;transform:none}}
+@keyframes fade{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv,.js .hero .name,.js .hero .now,.js .strips{opacity:1!important;transform:none!important}
+  .js .scribble path{stroke-dashoffset:0!important}
+  .strip .roll{transform:none!important}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<a class="sr-only" href="#sobre">Pular para o conteúdo</a>
+
+<!-- ================= HEADER ================= -->
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="#inicio" aria-label="Giullia Pimentel, voltar ao início">Giullia Pimentel</a>
+    <nav aria-label="Principal">
+      <ul class="nav">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#videos">Vídeos</a></li>
+        <li><a href="#marcas">Marcas</a></li>
+        <li class="cta"><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="drawer">Menu</button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="close" type="button">Fechar</button>
+  <ul>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#videos">Vídeos</a></li>
+    <li><a href="#marcas">Marcas</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <p class="foot">Curitiba / PR · Assessoria · Conteúdo · Eventos</p>
+</div>
+
+<main>
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div class="hero-text">
+      <p class="hi">oi, eu sou a</p>
+      <h1>
+        <span class="name">Giullia<br>Pimentel</span>
+        <span class="role">Assessora de Imprensa, criadora de conteúdo e estrategista de marcas no digital</span>
+      </h1>
+      <ul class="tags" aria-label="Territórios"><li>imprensa</li><li>eventos</li><li>futebol</li><li>conteúdo</li></ul>
+      <p class="bio">Comunicadora que trabalha onde as coisas acontecem. Faço assessoria de imprensa, conteúdo e cobertura em tempo real para eventos, clubes e marcas.</p>
+      <div class="hero-actions">
+        <a class="btn btn-y" href="#projetos">Ver projetos <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-w" href="mailto:giullia_pimentel@hotmail.com">Mandar um email</a>
+      </div>
+    </div>
+    <div class="strips" aria-label="Fotos da Giullia em eventos e no futebol">
+      <div class="strip b" aria-hidden="true"><div class="win"><div class="roll"><img src="img/giu-festival.webp" alt="" width="600" height="800" loading="lazy"><img src="img/giu-copa.webp" alt="" width="600" height="800" loading="lazy"><img src="img/giu-joinha.webp" alt="" width="600" height="800" loading="lazy"><img src="img/giu-backstage.webp" alt="" width="600" height="800" loading="lazy"><img src="img/giu-credencial.webp" alt="" width="600" height="800" loading="lazy"><img src="img/giu-lente.webp" alt="" width="600" height="800" loading="lazy"><img src="img/giu-campo-sq.webp" alt="" width="600" height="800" loading="lazy"><img src="img/giu-festival.webp" alt="" width="600" height="800"><img src="img/giu-copa.webp" alt="" width="600" height="800"><img src="img/giu-joinha.webp" alt="" width="600" height="800"><img src="img/giu-backstage.webp" alt="" width="600" height="800"><img src="img/giu-credencial.webp" alt="" width="600" height="800"><img src="img/giu-lente.webp" alt="" width="600" height="800"><img src="img/giu-campo-sq.webp" alt="" width="600" height="800"></div></div></div>
+      <div class="strip a">
+        <span class="live"><i aria-hidden="true"></i>Ao vivo</span>
+        <div class="win"><div class="roll"><img src="img/giu-credencial.webp" alt="Giullia sorrindo nos bastidores de um festival" width="600" height="800"><img src="img/giu-lente.webp" alt="Giullia de boné rindo com luz dourada" width="600" height="800"><img src="img/giu-campo-sq.webp" alt="Giullia à beira do campo de futebol" width="600" height="800"><img src="img/giu-festival.webp" alt="Giullia no festival no fim de tarde" width="600" height="800"><img src="img/giu-copa.webp" alt="Giullia de jaqueta em um espaço de evento" width="600" height="800"><img src="img/giu-joinha.webp" alt="Giullia fazendo joinha em um festival" width="600" height="800"><img src="img/giu-backstage.webp" alt="Giullia no backstage de um palco" width="600" height="800"><img src="img/giu-credencial.webp" alt="" aria-hidden="true" width="600" height="800"><img src="img/giu-lente.webp" alt="" aria-hidden="true" width="600" height="800"><img src="img/giu-campo-sq.webp" alt="" aria-hidden="true" width="600" height="800"><img src="img/giu-festival.webp" alt="" aria-hidden="true" width="600" height="800"><img src="img/giu-copa.webp" alt="" aria-hidden="true" width="600" height="800"><img src="img/giu-joinha.webp" alt="" aria-hidden="true" width="600" height="800"><img src="img/giu-backstage.webp" alt="" aria-hidden="true" width="600" height="800"></div></div>
+        <span class="caption">direto do backstage</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SOBRE ================= -->
+<section class="sobre" id="sobre">
+  <div class="wrap grid">
+    <div class="circle-photo rv">
+      <img src="img/giu-lente.webp" width="733" height="1100" loading="lazy"
+           alt="Giullia de boné e óculos de sol, rindo durante um evento, com luz dourada de fim de tarde">
+      <span class="dot" aria-hidden="true"></span>
+    </div>
+    <div>
+      <h2 class="h-l rv d1">Sobre mim</h2>
+      <svg class="scribble rv d2" viewBox="0 0 440 70" aria-hidden="true"><path d="M8 58 C60 30 90 22 104 30 C116 38 72 62 92 58 C120 50 150 18 168 28 C182 38 140 62 164 56 C196 46 220 16 238 26 C252 36 210 60 236 54 C268 46 292 18 310 26 C324 34 286 58 312 52 C350 42 390 30 432 30"/></svg>
+      <div class="lead rv d2">
+        <p>Sou a Giu, assessora de imprensa e criadora de conteúdo em Curitiba. Hoje estou na CWB Brasil Group, onde cuido da assessoria, do conteúdo digital e da <span class="hl">cobertura real time dos eventos</span>, com entregas para as marcas patrocinadoras.</p>
+        <p>Minha base é o esporte. Fui colunista sobre o Coritiba no Mercado do Futebol, repórter credenciada da Invicta Press em jogos e coletivas e, desde 2019, sou superintendente de comunicação do Clube SE Tanguá.</p>
+        <p>No dia do evento, sou eu quem atende a imprensa, grava, publica e confere se cada patrocinador apareceu do jeito combinado.</p>
+      </div>
+      <p class="formacao rv d3"><b>Formação</b> Comunicação Institucional na UFPR <span>2020 a 2023</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TERRITÓRIOS ================= -->
+<section class="terr" aria-labelledby="terr-t">
+  <div class="wrap">
+    <div class="terr-head">
+      <h2 class="h-l rv" id="terr-t">Onde eu atuo</h2>
+      <p class="rv d1">Os três lugares onde o meu trabalho acontece. Muitas vezes, no mesmo dia.</p>
+    </div>
+    <ul class="terr-list">
+      <li class="rv">
+        <div class="circ"><img src="img/giu-festival.webp" width="733" height="1100" loading="lazy" alt="Giullia em um festival ao ar livre, com credencial, no fim de tarde"><span class="num" aria-hidden="true">01</span></div>
+        <div><h3>Eventos</h3><p>Bastidores, produção e cobertura real time de shows, festivais e ativações.</p></div>
+      </li>
+      <li class="rv d1">
+        <div class="circ"><img src="img/giu-campo-sq.webp" width="700" height="700" loading="lazy" alt="Giullia à beira do campo de futebol, sorrindo, com camisa de clube"><span class="num" aria-hidden="true">02</span></div>
+        <div><h3>Esporte</h3><p>Reportagem, cobertura de jogos e coletivas e comunicação de clube.</p></div>
+      </li>
+      <li class="rv d2">
+        <div class="circ"><img src="img/giu-copa.webp" width="733" height="1100" loading="lazy" alt="Giullia de jaqueta e credencial em um espaço de evento, sorrindo para a câmera"><span class="num" aria-hidden="true">03</span></div>
+        <div><h3>Imprensa + marcas</h3><p>Assessoria de imprensa, relacionamento com veículos e entregas para patrocinadores.</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= MÉTRICAS =================
+     EDITAR: os números abaixo são PLACEHOLDERS. Trocar o texto dentro de <span class="v"> pelos dados reais. -->
+<section class="metricas" aria-labelledby="met-t">
+  <div class="wrap">
+    <div class="top-row">
+      <h2 class="h-m rv" id="met-t">Meus números</h2>
+    </div>
+    <div class="stats">
+      <div class="stat rv"><span class="n"><span class="br">[</span><span class="v">+120K</span><span class="br">]</span></span><span class="l">Alcance total</span></div>
+      <div class="stat rv d1"><span class="n"><span class="br">[</span><span class="v">48K</span><span class="br">]</span></span><span class="l">Média de views</span></div>
+      <div class="stat rv d2"><span class="n"><span class="br">[</span><span class="v">35+</span><span class="br">]</span></span><span class="l">Eventos acompanhados</span></div>
+      <div class="stat rv d3"><span class="n"><span class="br">[</span><span class="v">15+</span><span class="br">]</span></span><span class="l">Marcas e projetos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ÁREAS DE ATUAÇÃO ================= -->
+<section class="areas" aria-labelledby="areas-t">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="h-l rv" id="areas-t">O que eu faço.</h2>
+      <p class="lead rv d1">Assessoria, conteúdo e cobertura para eventos, clubes e marcas.</p>
+    </div>
+    <ol class="area-list">
+      <li class="rv"><span class="i">01</span><h3>Assessoria de imprensa <span class="sub">relações com a imprensa</span></h3><p>Criação de pautas e releases, relacionamento com veículos e jornalistas e atendimento à imprensa durante os eventos.</p></li>
+      <li class="rv"><span class="i">02</span><h3>Conteúdo digital <span class="sub">content</span></h3><p>Idealização, roteiro, captação e edição de conteúdos para marcas, eventos e projetos.</p></li>
+      <li class="rv"><span class="i">03</span><h3>Real time <span class="sub">cobertura</span></h3><p>Roteirização, captação e publicação de cobertura mobile ao vivo em shows, festivais e ativações.</p></li>
+      <li class="rv"><span class="i">04</span><h3>Esporte <span class="sub">reportagem</span></h3><p>Cobertura de jogos e coletivas, entrevistas e comunicação institucional de clube.</p></li>
+      <li class="rv"><span class="i">05</span><h3>Marcas e patrocinadores <span class="sub">entregas</span></h3><p>Planejamento e execução das entregas de conteúdo para as marcas que patrocinam os eventos.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= PROJETOS / CASES =================
+     EDITAR: todos os cases são PLACEHOLDERS. Substituir textos entre [colchetes], fotos e vídeos. -->
+<section class="projetos" id="projetos" aria-labelledby="proj-t">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="label rv">Projetos</p>
+        <h2 class="h-l rv d1" id="proj-t">Bastidores que<br>viraram história.</h2>
+      </div>
+      <svg class="scribble rv d2" viewBox="0 0 440 70" aria-hidden="true"><path d="M8 50 C70 24 104 18 118 28 C130 38 88 60 110 54 C140 46 170 16 190 26 C204 36 160 60 186 54 C220 44 250 16 268 26 C282 36 240 60 266 54 C310 42 380 28 432 26"/></svg>
+    </div>
+
+    <!-- CASE 01 -->
+    <article class="case">
+      <div class="media m-1 rv">
+        <div class="frame"><img src="img/giu-backstage.webp" width="733" height="1100" loading="lazy" alt="Giullia no backstage de um palco"></div>
+      </div>
+      <div class="rv d1">
+        <div class="case-no"><span class="c">01</span><span class="label">Case</span></div>
+        <h3>[NOME DO PROJETO]</h3>
+        <p class="client">[MARCA / CLIENTE]</p>
+        <div class="cats"><span>Assessoria</span><span>Evento</span><span>Conteúdo</span></div>
+        <dl>
+          <div><dt>Contexto</dt><dd><span class="ph">[INSERIR BREVE CONTEXTO DO PROJETO]</span></dd></div>
+          <div><dt>Meu papel</dt><dd><span class="ph">[INSERIR O QUE A GIULLIA FEZ]</span></dd></div>
+          <div><dt>Entregas</dt><dd><span class="ph">[ASSESSORIA]</span> <span class="ph">[COBERTURA]</span> <span class="ph">[CONTEÚDO]</span> <span class="ph">[RELACIONAMENTO]</span></dd></div>
+          <div><dt>Resultado</dt><dd><span class="ph">[INSERIR RESULTADO OU MÉTRICA]</span></dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- CASE 02 -->
+    <article class="case flip">
+      <div class="media m-2 rv">
+        <div class="frame"><img src="img/giu-joinha.webp" width="733" height="1100" loading="lazy" alt="Giullia comemorando com joinha em um festival"></div>
+        <div class="frame ph-tile y"><span>[Inserir foto 02]</span></div>
+        <div class="frame ph-tile b"><span>[Inserir foto 03]</span></div>
+      </div>
+      <div class="rv d1">
+        <div class="case-no"><span class="c">02</span><span class="label">Case</span></div>
+        <h3>[NOME DO EVENTO]</h3>
+        <p class="client">[MARCA / PRODUTORA]</p>
+        <div class="cats"><span>Eventos</span><span>Cobertura real time</span></div>
+        <dl>
+          <div><dt>Contexto</dt><dd><span class="ph">[INSERIR CONTEXTO]</span></dd></div>
+          <div><dt>O que fiz</dt><dd><span class="ph">[INSERIR ATUAÇÃO]</span></dd></div>
+          <div><dt>Resultado</dt><dd><span class="ph">[INSERIR RESULTADO]</span></dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- CASE 03 -->
+    <article class="case">
+      <div class="media m-3 rv">
+        <div class="frame"><img src="img/giu-campo.webp" width="1100" height="733" loading="lazy" alt="Giullia à beira do campo de futebol"></div>
+      </div>
+      <div class="rv d1">
+        <div class="case-no"><span class="c">03</span><span class="label">Case</span></div>
+        <h3>[PROJETO ESPORTIVO]</h3>
+        <p class="client">[CLUBE / MARCA]</p>
+        <div class="cats"><span>Comunicação esportiva</span></div>
+        <dl>
+          <div><dt>Contexto</dt><dd><span class="ph">[INSERIR CONTEXTO]</span></dd></div>
+          <div><dt>O que fiz</dt><dd><span class="ph">[INSERIR ATUAÇÃO EM CAMPO, ENTREVISTAS E BASTIDORES]</span></dd></div>
+          <div><dt>Resultado</dt><dd><span class="ph">[INSERIR RESULTADO]</span></dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- CASE 04 -->
+    <article class="case flip">
+      <div class="media m-4 rv">
+        <div class="frame ph-tile y"><span>[Inserir peça 01]</span></div>
+        <div class="frame ph-tile b"><span>[Inserir vídeo]</span></div>
+        <div class="frame ph-tile"><span>[Inserir peça 02]</span></div>
+      </div>
+      <div class="rv d1">
+        <div class="case-no"><span class="c">04</span><span class="label">Case</span></div>
+        <h3>[PROJETO DE MARCA]</h3>
+        <p class="client">[MARCA]</p>
+        <div class="cats"><span>Conteúdo</span><span>Estratégia digital</span></div>
+        <dl>
+          <div><dt>Contexto</dt><dd><span class="ph">[INSERIR CONTEXTO]</span></dd></div>
+          <div><dt>Entregas</dt><dd><span class="ph">[INSERIR VÍDEOS E PEÇAS]</span></dd></div>
+          <div><dt>Resultado</dt><dd><span class="ph">[INSERIR RESULTADO]</span></dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= VÍDEOS =================
+     EDITAR: trocar href="#" pelo link do vídeo (Reels/TikTok) e a imagem pela capa real. -->
+<section class="videos" id="videos" aria-labelledby="vid-t">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="h-l rv" id="vid-t">Onde acontece, <span class="y">eu estou.</span></h2>
+      <p class="rv d1">Coberturas, bastidores e conteúdos para marcas, captados durante o evento e publicados em tempo real.</p>
+    </div>
+    <ul class="reel">
+      <li class="rv"><a class="vcard" href="#" aria-label="Vídeo 01, inserir vídeo"><img src="img/giu-festival.webp" width="733" height="1100" loading="lazy" alt=""><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span><span class="info"><b>[Vídeo 01]</b><span>Inserir vídeo aqui</span><em>Cobertura de evento</em></span></a></li>
+      <li class="rv d1"><a class="vcard" href="#" aria-label="Vídeo 02, inserir vídeo"><img src="img/giu-backstage.webp" width="733" height="1100" loading="lazy" alt=""><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span><span class="info"><b>[Vídeo 02]</b><span>Inserir vídeo aqui</span><em>Bastidores</em></span></a></li>
+      <li class="rv d2"><a class="vcard" href="#" aria-label="Vídeo 03, inserir vídeo"><img src="img/giu-campo-sq.webp" width="700" height="700" loading="lazy" alt=""><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span><span class="info"><b>[Vídeo 03]</b><span>Inserir vídeo aqui</span><em>Esporte</em></span></a></li>
+      <li class="rv d3"><a class="vcard" href="#" aria-label="Vídeo 04, inserir vídeo"><img src="img/giu-copa.webp" width="733" height="1100" loading="lazy" alt=""><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span><span class="info"><b>[Vídeo 04]</b><span>Inserir vídeo aqui</span><em>Conteúdo para marca</em></span></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= MARCAS =================
+     EDITAR: substituir cada [MARCA] pelo logo (img) ou nome real. -->
+<section class="marcas" id="marcas" aria-labelledby="marcas-t">
+  <div class="wrap">
+    <p class="label rv">Quem já passou por aqui</p>
+    <h2 class="h-l rv d1" id="marcas-t">Marcas, projetos e histórias que já passaram por mim.</h2>
+    <ul class="logos rv d2">
+      <li><div><b>[MARCA 01]</b><small>inserir logo</small></div></li>
+      <li><div><b>[MARCA 02]</b><small>inserir logo</small></div></li>
+      <li><div><b>[MARCA 03]</b><small>inserir logo</small></div></li>
+      <li><div><b>[MARCA 04]</b><small>inserir logo</small></div></li>
+      <li><div><b>[MARCA 05]</b><small>inserir logo</small></div></li>
+      <li><div><b>[MARCA 06]</b><small>inserir logo</small></div></li>
+      <li><div><b>[MARCA 07]</b><small>inserir logo</small></div></li>
+      <li><div><b>[MARCA 08]</b><small>inserir logo</small></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= TRAJETÓRIA ================= -->
+<section class="traj" aria-labelledby="traj-t">
+  <div class="wrap grid">
+    <div class="side">
+      <p class="label rv">Trajetória</p>
+      <h2 class="h-l rv d1" id="traj-t">Do campo<br><span class="thin">ao palco.</span></h2>
+      <p class="rv d2">Trajetória completa no <a href="https://www.linkedin.com/in/giullia-pimentel-grzybowski-446011208/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    </div>
+    <ol class="tl">
+      <li class="rv"><span class="yr"><span class="now-dot" aria-hidden="true"></span>desde 2026</span><div><h3>CWB Brasil Group</h3><p>Assessora de imprensa e conteúdo digital</p></div></li>
+      <li class="rv"><span class="yr"><span class="now-dot" aria-hidden="true"></span>desde 2019</span><div><h3>Clube SE Tanguá</h3><p>Superintendente de Comunicação</p></div></li>
+      <li class="rv"><span class="yr">2025</span><div><h3>Prefeitura Municipal de Almirante Tamandaré</h3><p>Repórter e Redatora</p></div></li>
+      <li class="rv"><span class="yr">2023 a 2025</span><div><h3>Vivan Atacado de Confecções</h3><p>Gerente de Marketing</p></div></li>
+      <li class="rv"><span class="yr">2022 a 2024</span><div><h3>Invicta Press</h3><p>Repórter esportiva credenciada</p></div></li>
+      <li class="rv"><span class="yr">2022 a 2023</span><div><h3>Studio Lupie</h3><p>Social Media</p></div></li>
+      <li class="rv"><span class="yr">2020</span><div><h3>Mercado do Futebol</h3><p>Colunista esportiva</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= CONTATO ================= -->
+<section class="contato" id="contato" aria-labelledby="cont-t">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <p class="label rv">Contato</p>
+        <h2 class="rv d1" id="cont-t">Se está acontecendo, <span class="thin">dá para contar.</span></h2>
+        <div class="who rv d2">
+          <p style="margin:0;max-width:34ch;width:100%">Vamos contar essa história juntos? Me manda um oi por aqui.</p>
+          <b>Giullia Pimentel</b><span class="loc">Curitiba, PR</span>
+          <a class="btn btn-k" href="https://wa.me/5541996967504" target="_blank" rel="noopener">Chamar no WhatsApp <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="circle-photo rv d2">
+        <img src="img/giu-joinha.webp" width="733" height="1100" loading="lazy" alt="Giullia fazendo joinha com as duas mãos, empolgada, em um festival">
+        <span class="dot" aria-hidden="true"></span>
+      </div>
+    </div>
+    <ul class="contact-list rv d3">
+      <li><span class="label">Email</span><a href="mailto:giullia_pimentel@hotmail.com">giullia_pimentel@hotmail.com</a></li>
+      <li><span class="label">WhatsApp</span><a href="https://wa.me/5541996967504" target="_blank" rel="noopener">(41) 99696 7504</a></li>
+      <li><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/giullia-pimentel-grzybowski-446011208/" target="_blank" rel="noopener">Giullia Pimentel</a></li>
+      <li><span class="label">Instagram</span><a href="https://www.instagram.com/agiupimentel/" target="_blank" rel="noopener">@agiupimentel</a></li>
+      <li><span class="label">TikTok</span><a href="https://www.tiktok.com/@agiupimentel" target="_blank" rel="noopener">@agiupimentel</a></li>
+      <li><span class="label">Base</span><span style="font-weight:700;font-size:clamp(17px,1.5vw,20px)">Curitiba / PR</span></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <p class="lockup"><span class="g">Giullia<br>Pimentel</span></p>
+    <nav aria-label="Rodapé">
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#videos">Vídeos</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li><a href="https://www.linkedin.com/in/giullia-pimentel-grzybowski-446011208/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/agiupimentel/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@agiupimentel" target="_blank" rel="noopener">TikTok</a></li>
+      </ul>
+    </nav>
+    <p class="tag">Comunicação acontece <span class="hl">agora.</span></p>
+    <p class="small"><span>© Giullia Pimentel Grzybowski</span><span>Curitiba, PR</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // rabisco: calcula o comprimento para a animação de desenho
+  document.querySelectorAll('.scribble path').forEach(function(p){
+    try{ p.parentNode.style.setProperty('--len', Math.ceil(p.getTotalLength())+5); }catch(e){}
+  });
+  // entrada suave no scroll
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    els.forEach(function(el){ io.observe(el); });
+  } else { els.forEach(function(el){ el.classList.add('in'); }); }
+
+  // menu mobile
+  var btn=document.querySelector('.menu-btn'), dr=document.getElementById('drawer'), cl=dr.querySelector('.close');
+  function setOpen(o){ dr.classList.toggle('open',o); btn.setAttribute('aria-expanded',o); document.body.style.overflow=o?'hidden':''; if(o){cl.focus();}else{btn.focus();} }
+  btn.addEventListener('click',function(){ setOpen(true); });
+  cl.addEventListener('click',function(){ setOpen(false); });
+  dr.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ dr.classList.remove('open'); btn.setAttribute('aria-expanded',false); document.body.style.overflow=''; }); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && dr.classList.contains('open')) setOpen(false); });
+
+  // vídeos placeholder: evita pular para o topo
+  document.querySelectorAll('.vcard[href="#"]').forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); }); });
+})();
+</script>
+</body>
+</html>
