@@ -414,7 +414,7 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
       <p class="bio">{{ s.inicio.apresentacao | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
       <div class="hero-actions">
         <a class="btn btn-y" href="#projetos">{{ s.inicio.botao_projetos | escape }} <span class="arr" aria-hidden="true">→</span></a>
-        {%- if s.contato.email != blank %}
+        {%- assign _v = s.contato.email | strip %}{% if _v != "" %}
         <a class="btn btn-w" href="mailto:{{ s.contato.email | strip }}">{{ s.inicio.botao_email | escape }}</a>
         {%- endif %}
       </div>
@@ -422,11 +422,11 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
     <div class="strips" aria-label="Fotos da {{ s.inicio.nome | escape }} em eventos e no futebol">
       <div class="strip b" aria-hidden="true"><div class="win"><div class="roll">{% for r in (1..2) %}{% for f in fotos offset: meio %}<img src="{{ f.foto }}" alt="" width="600" height="800"{% if r == 1 %} loading="lazy"{% endif %}>{% endfor %}{% for f in fotos limit: meio %}<img src="{{ f.foto }}" alt="" width="600" height="800"{% if r == 1 %} loading="lazy"{% endif %}>{% endfor %}{% endfor %}</div></div></div>
       <div class="strip a">
-        {%- if s.inicio.selo != blank %}
+        {%- assign _v = s.inicio.selo | strip %}{% if _v != "" %}
         <span class="live"><i aria-hidden="true"></i>{{ s.inicio.selo | escape }}</span>
         {%- endif %}
         <div class="win"><div class="roll">{% for f in fotos %}<img src="{{ f.foto }}" alt="{{ f.descricao | escape }}" width="600" height="800">{% endfor %}{% for f in fotos %}<img src="{{ f.foto }}" alt="" aria-hidden="true" width="600" height="800">{% endfor %}</div></div>
-        {%- if s.inicio.legenda_fotos != blank %}
+        {%- assign _v = s.inicio.legenda_fotos | strip %}{% if _v != "" %}
         <span class="caption">{{ s.inicio.legenda_fotos | escape }}</span>
         {%- endif %}
       </div>
@@ -449,7 +449,7 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
         <p>{{ p | markdownify | remove: '<p>' | remove: '</p>' | strip | replace: '<strong>', '<span class="hl">' | replace: '</strong>', '</span>' }}</p>
         {%- endfor %}
       </div>
-      {%- if s.sobre.formacao != blank %}
+      {%- assign _v = s.sobre.formacao | strip %}{% if _v != "" %}
       <p class="formacao rv d3"><b>Formação</b> {{ s.sobre.formacao | escape }} <span>{{ s.sobre.formacao_periodo | escape }}</span></p>
       {%- endif %}
     </div>
@@ -497,7 +497,7 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
     </div>
     <ol class="area-list">
       {%- for a in s.servicos.itens %}
-      <li class="rv"><span class="i">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span><h3>{{ a.nome | escape }}{% if a.legenda != blank %} <span class="sub">{{ a.legenda | escape }}</span>{% endif %}</h3><p>{{ a.texto | escape }}</p></li>
+      <li class="rv"><span class="i">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span><h3>{{ a.nome | escape }}{% assign _v = a.legenda | strip %}{% if _v != "" %} <span class="sub">{{ a.legenda | escape }}</span>{% endif %}</h3><p>{{ a.texto | escape }}</p></li>
       {%- endfor %}
     </ol>
   </div>
@@ -509,7 +509,7 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
     <div class="head">
       <div>
         <p class="label rv">{{ s.projetos.rotulo | escape }}</p>
-        <h2 class="h-l rv d1" id="proj-t">{{ s.projetos.titulo_linha1 | escape }}{% if s.projetos.titulo_linha2 != blank %}<br>{{ s.projetos.titulo_linha2 | escape }}{% endif %}</h2>
+        <h2 class="h-l rv d1" id="proj-t">{{ s.projetos.titulo_linha1 | escape }}{% assign _v = s.projetos.titulo_linha2 | strip %}{% if _v != "" %}<br>{{ s.projetos.titulo_linha2 | escape }}{% endif %}</h2>
       </div>
       <svg class="scribble rv d2" viewBox="0 0 440 70" aria-hidden="true"><path d="M8 50 C70 24 104 18 118 28 C130 38 88 60 110 54 C140 46 170 16 190 26 C204 36 160 60 186 54 C220 44 250 16 268 26 C282 36 240 60 266 54 C310 42 380 28 432 26"/></svg>
     </div>
@@ -520,17 +520,17 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
     <article class="case{% assign par = forloop.index0 | modulo: 2 %}{% if par == 1 %} flip{% endif %}">
       <div class="media {{ m }} rv">
         {%- for md in c.midias %}
-        {%- if md.foto != blank %}
+        {%- assign _v = md.foto | strip %}{% if _v != "" %}
         <div class="frame"><img src="{{ md.foto }}" loading="lazy" alt="{{ md.descricao | escape }}"></div>
         {%- else %}{% assign ci = k | modulo: 3 %}{% assign cor = cores[ci] %}{% assign k = k | plus: 1 %}
-        <div class="frame ph-tile{% if cor != blank %} {{ cor }}{% endif %}"><span>{{ md.texto_sem_foto | escape }}</span></div>
+        <div class="frame ph-tile{% assign _v = cor | strip %}{% if _v != "" %} {{ cor }}{% endif %}"><span>{{ md.texto_sem_foto | escape }}</span></div>
         {%- endif %}
         {%- endfor %}
       </div>
       <div class="rv d1">
         <div class="case-no"><span class="c">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span><span class="label">Case</span></div>
         <h3>{{ c.titulo | escape }}</h3>
-        {%- if c.cliente != blank %}
+        {%- assign _v = c.cliente | strip %}{% if _v != "" %}
         <p class="client">{{ c.cliente | escape }}</p>
         {%- endif %}
         <div class="cats">{% for cat in c.categorias %}<span>{{ cat | escape }}</span>{% endfor %}</div>
@@ -549,12 +549,12 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
 <section class="videos" id="videos" aria-labelledby="vid-t">
   <div class="wrap">
     <div class="head">
-      <h2 class="h-l rv" id="vid-t">{{ s.videos.titulo | escape }}{% if s.videos.titulo_destaque != blank %} <span class="y">{{ s.videos.titulo_destaque | escape }}</span>{% endif %}</h2>
+      <h2 class="h-l rv" id="vid-t">{{ s.videos.titulo | escape }}{% assign _v = s.videos.titulo_destaque | strip %}{% if _v != "" %} <span class="y">{{ s.videos.titulo_destaque | escape }}</span>{% endif %}</h2>
       <p class="rv d1">{{ s.videos.introducao | escape }}</p>
     </div>
     <ul class="reel">
       {%- for v in s.videos.itens %}{% assign d = forloop.index0 | modulo: 4 %}
-      <li class="rv{% if d > 0 %} d{{ d }}{% endif %}"><a class="vcard" href="{% if v.link != blank %}{{ v.link | strip }}{% else %}#{% endif %}"{% if v.link != blank %} target="_blank" rel="noopener"{% endif %} aria-label="{{ v.titulo | escape }}, {{ v.texto | escape }}">{% if v.capa != blank %}<img src="{{ v.capa }}" loading="lazy" alt="">{% endif %}<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span><span class="info"><b>{{ v.titulo | escape }}</b><span>{{ v.texto | escape }}</span>{% if v.etiqueta != blank %}<em>{{ v.etiqueta | escape }}</em>{% endif %}</span></a></li>
+      <li class="rv{% if d > 0 %} d{{ d }}{% endif %}"><a class="vcard" href="{% assign _v = v.link | strip %}{% if _v != "" %}{{ v.link | strip }}{% else %}#{% endif %}"{% assign _v = v.link | strip %}{% if _v != "" %} target="_blank" rel="noopener"{% endif %} aria-label="{{ v.titulo | escape }}, {{ v.texto | escape }}">{% assign _v = v.capa | strip %}{% if _v != "" %}<img src="{{ v.capa }}" loading="lazy" alt="">{% endif %}<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></span><span class="info"><b>{{ v.titulo | escape }}</b><span>{{ v.texto | escape }}</span>{% assign _v = v.etiqueta | strip %}{% if _v != "" %}<em>{{ v.etiqueta | escape }}</em>{% endif %}</span></a></li>
       {%- endfor %}
     </ul>
   </div>
@@ -567,7 +567,7 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
     <h2 class="h-l rv d1" id="marcas-t">{{ s.marcas.titulo | escape }}</h2>
     <ul class="logos rv d2">
       {%- for b in s.marcas.itens %}
-      {%- if b.logo != blank %}
+      {%- assign _v = b.logo | strip %}{% if _v != "" %}
       <li><img src="{{ b.logo }}" loading="lazy" alt="{{ b.nome | escape }}"></li>
       {%- else %}
       <li><div><b>{{ b.nome | escape }}</b>{% if b.nome contains '[' %}<small>inserir logo</small>{% endif %}</div></li>
@@ -582,8 +582,8 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
   <div class="wrap grid">
     <div class="side">
       <p class="label rv">{{ s.trajetoria.rotulo | escape }}</p>
-      <h2 class="h-l rv d1" id="traj-t">{{ s.trajetoria.titulo | escape }}{% if s.trajetoria.titulo_fino != blank %}<br><span class="thin">{{ s.trajetoria.titulo_fino | escape }}</span>{% endif %}</h2>
-      {%- if s.contato.linkedin != blank %}
+      <h2 class="h-l rv d1" id="traj-t">{{ s.trajetoria.titulo | escape }}{% assign _v = s.trajetoria.titulo_fino | strip %}{% if _v != "" %}<br><span class="thin">{{ s.trajetoria.titulo_fino | escape }}</span>{% endif %}</h2>
+      {%- assign _v = s.contato.linkedin | strip %}{% if _v != "" %}
       <p class="rv d2">{{ s.trajetoria.texto_link | escape }} <a href="{{ s.contato.linkedin | strip }}" target="_blank" rel="noopener">LinkedIn</a>.</p>
       {%- endif %}
     </div>
@@ -603,13 +603,13 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
     <div class="grid">
       <div>
         <p class="label rv">{{ ct.rotulo | escape }}</p>
-        <h2 class="rv d1" id="cont-t">{{ ct.titulo | escape }}{% if ct.titulo_fino != blank %} <span class="thin">{{ ct.titulo_fino | escape }}</span>{% endif %}</h2>
+        <h2 class="rv d1" id="cont-t">{{ ct.titulo | escape }}{% assign _v = ct.titulo_fino | strip %}{% if _v != "" %} <span class="thin">{{ ct.titulo_fino | escape }}</span>{% endif %}</h2>
         <div class="who rv d2">
-          {%- if ct.convite != blank %}
+          {%- assign _v = ct.convite | strip %}{% if _v != "" %}
           <p style="margin:0;max-width:34ch;width:100%">{{ ct.convite | escape }}</p>
           {%- endif %}
           <b>{{ ct.nome | escape }}</b><span class="loc">{{ ct.cidade | escape }}</span>
-          {%- if zap != blank %}
+          {%- assign _v = zap | strip %}{% if _v != "" %}
           <a class="btn btn-k" href="https://wa.me/{{ zap }}" target="_blank" rel="noopener">{{ ct.botao_whatsapp | escape }} <span class="arr" aria-hidden="true">→</span></a>
           {%- endif %}
         </div>
@@ -620,22 +620,22 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
       </div>
     </div>
     <ul class="contact-list rv d3">
-      {%- if ct.email != blank %}
+      {%- assign _v = ct.email | strip %}{% if _v != "" %}
       <li><span class="label">Email</span><a href="mailto:{{ ct.email | strip }}">{{ ct.email | escape }}</a></li>
       {%- endif %}
-      {%- if zap != blank %}
+      {%- assign _v = zap | strip %}{% if _v != "" %}
       <li><span class="label">WhatsApp</span><a href="https://wa.me/{{ zap }}" target="_blank" rel="noopener">({{ zap | slice: 2, 2 }}) {{ zap | slice: 4, 5 }} {{ zap | slice: 9, 4 }}</a></li>
       {%- endif %}
-      {%- if ct.linkedin != blank %}
+      {%- assign _v = ct.linkedin | strip %}{% if _v != "" %}
       <li><span class="label">LinkedIn</span><a href="{{ ct.linkedin | strip }}" target="_blank" rel="noopener">{{ ct.linkedin_texto | escape }}</a></li>
       {%- endif %}
-      {%- if ct.instagram != blank %}{% assign ig = ct.instagram | remove: '@' | strip %}
+      {%- assign _v = ct.instagram | strip %}{% if _v != "" %}{% assign ig = ct.instagram | remove: '@' | strip %}
       <li><span class="label">Instagram</span><a href="https://www.instagram.com/{{ ig }}/" target="_blank" rel="noopener">@{{ ig }}</a></li>
       {%- endif %}
-      {%- if ct.tiktok != blank %}{% assign tt = ct.tiktok | remove: '@' | strip %}
+      {%- assign _v = ct.tiktok | strip %}{% if _v != "" %}{% assign tt = ct.tiktok | remove: '@' | strip %}
       <li><span class="label">TikTok</span><a href="https://www.tiktok.com/@{{ tt }}" target="_blank" rel="noopener">@{{ tt }}</a></li>
       {%- endif %}
-      {%- if ct.base != blank %}
+      {%- assign _v = ct.base | strip %}{% if _v != "" %}
       <li><span class="label">Base</span><span style="font-weight:700;font-size:clamp(17px,1.5vw,20px)">{{ ct.base | escape }}</span></li>
       {%- endif %}
     </ul>
@@ -653,18 +653,18 @@ footer .small{margin-top:26px;font-size:13px;display:flex;flex-wrap:wrap;justify
         <li><a href="#projetos">Projetos</a></li>
         <li><a href="#videos">Vídeos</a></li>
         <li><a href="#contato">Contato</a></li>
-        {%- if ct.linkedin != blank %}
+        {%- assign _v = ct.linkedin | strip %}{% if _v != "" %}
         <li><a href="{{ ct.linkedin | strip }}" target="_blank" rel="noopener">LinkedIn</a></li>
         {%- endif %}
-        {%- if ct.instagram != blank %}
+        {%- assign _v = ct.instagram | strip %}{% if _v != "" %}
         <li><a href="https://www.instagram.com/{{ ig }}/" target="_blank" rel="noopener">Instagram</a></li>
         {%- endif %}
-        {%- if ct.tiktok != blank %}
+        {%- assign _v = ct.tiktok | strip %}{% if _v != "" %}
         <li><a href="https://www.tiktok.com/@{{ tt }}" target="_blank" rel="noopener">TikTok</a></li>
         {%- endif %}
       </ul>
     </nav>
-    <p class="tag">{{ s.rodape.frase | escape }}{% if s.rodape.destaque != blank %} <span class="hl">{{ s.rodape.destaque | escape }}</span>{% endif %}</p>
+    <p class="tag">{{ s.rodape.frase | escape }}{% assign _v = s.rodape.destaque | strip %}{% if _v != "" %} <span class="hl">{{ s.rodape.destaque | escape }}</span>{% endif %}</p>
     <p class="small"><span>{{ s.rodape.assinatura | escape }}</span><span>{{ ct.cidade | escape }}</span></p>
   </div>
 </footer>
