@@ -1,0 +1,434 @@
+media:
+  input: img
+  output: img
+  categories: [image]
+
+content:
+  - name: site
+    label: Conteúdo do site
+    description: Todos os textos, fotos e listas do site. Mude o que quiser e clique em salvar. O site atualiza sozinho em 1 ou 2 minutos.
+    type: file
+    path: _data/site.yml
+    fields:
+      - name: geral
+        label: Informações gerais
+        type: object
+        fields:
+          - name: titulo_aba
+            label: Título da aba do navegador
+            description: Aparece na aba do navegador e no Google.
+            type: string
+          - name: descricao_google
+            label: Descrição para o Google
+            description: Frase curta que aparece embaixo do título nas buscas. Até uns 155 caracteres.
+            type: text
+          - name: frase_compartilhamento
+            label: Frase quando o link é compartilhado
+            description: Aparece no WhatsApp e no LinkedIn quando alguém manda o link do site.
+            type: string
+          - name: imagem_compartilhamento
+            label: Foto quando o link é compartilhado
+            type: image
+          - name: menu_rodape
+            label: Frase no fim do menu do celular
+            type: string
+
+      - name: inicio
+        label: Início (primeira tela)
+        type: object
+        fields:
+          - name: saudacao
+            label: Saudação
+            description: Texto pequeno acima do nome. Ex. oi, eu sou a
+            type: string
+          - name: nome
+            label: Nome (primeira linha)
+            type: string
+          - name: sobrenome
+            label: Sobrenome (segunda linha)
+            type: string
+          - name: cargo
+            label: Cargo
+            type: text
+          - name: palavras
+            label: Palavras em amarelo
+            description: As palavrinhas em itálico embaixo do cargo.
+            type: string
+            list: true
+          - name: apresentacao
+            label: Texto de apresentação
+            description: Para deixar uma palavra em negrito, coloque entre dois asteriscos, assim **palavra**.
+            type: text
+          - name: botao_projetos
+            label: Texto do botão amarelo
+            type: string
+          - name: botao_email
+            label: Texto do botão de email
+            type: string
+          - name: selo
+            label: Selo em cima das fotos
+            description: Ex. Ao vivo. Deixe vazio para esconder.
+            type: string
+          - name: legenda_fotos
+            label: Legenda embaixo das fotos
+            description: Deixe vazio para esconder.
+            type: string
+          - name: fotos
+            label: Fotos que se mexem
+            description: As fotos da tira que fica rolando. Fotos em pé ficam melhores.
+            type: object
+            list: true
+            fields:
+              - name: foto
+                label: Foto
+                type: image
+              - name: descricao
+                label: Descrição da foto
+                description: Para quem usa leitor de tela. Ex. Giullia sorrindo nos bastidores de um festival.
+                type: string
+
+      - name: sobre
+        label: Sobre mim
+        type: object
+        fields:
+          - name: titulo
+            label: Título
+            type: string
+          - name: foto
+            label: Foto redonda
+            type: image
+          - name: foto_descricao
+            label: Descrição da foto
+            type: string
+          - name: paragrafos
+            label: Parágrafos
+            description: Cada item é um parágrafo. Texto entre dois asteriscos, assim **texto**, ganha o marca-texto amarelo.
+            type: text
+            list: true
+          - name: formacao
+            label: Formação
+            description: Deixe vazio para esconder.
+            type: string
+          - name: formacao_periodo
+            label: Período da formação
+            type: string
+
+      - name: territorios
+        label: Onde eu atuo (bloco azul)
+        type: object
+        fields:
+          - name: titulo
+            label: Título
+            type: string
+          - name: introducao
+            label: Texto ao lado do título
+            type: text
+          - name: itens
+            label: Territórios
+            type: object
+            list: true
+            fields:
+              - name: nome
+                label: Nome
+                type: string
+              - name: texto
+                label: Texto
+                type: text
+              - name: foto
+                label: Foto redonda
+                type: image
+              - name: foto_descricao
+                label: Descrição da foto
+                type: string
+
+      - name: numeros
+        label: Meus números (bloco amarelo)
+        type: object
+        fields:
+          - name: titulo
+            label: Título
+            type: string
+          - name: itens
+            label: Números
+            description: O ideal são 4 números.
+            type: object
+            list: true
+            fields:
+              - name: valor
+                label: Número
+                description: Ex. +120K
+                type: string
+              - name: rotulo
+                label: O que o número mede
+                description: Ex. Alcance total
+                type: string
+
+      - name: servicos
+        label: O que eu faço
+        type: object
+        fields:
+          - name: titulo
+            label: Título
+            type: string
+          - name: introducao
+            label: Texto ao lado do título
+            type: text
+          - name: itens
+            label: Serviços
+            type: object
+            list: true
+            fields:
+              - name: nome
+                label: Nome do serviço
+                type: string
+              - name: legenda
+                label: Legenda em itálico
+                description: Aparece pequena embaixo do nome. Pode deixar vazio.
+                type: string
+              - name: texto
+                label: Descrição
+                type: text
+
+      - name: projetos
+        label: Projetos (cases)
+        type: object
+        fields:
+          - name: rotulo
+            label: Etiqueta pequena acima do título
+            type: string
+          - name: titulo_linha1
+            label: Título (primeira linha)
+            type: string
+          - name: titulo_linha2
+            label: Título (segunda linha)
+            type: string
+          - name: cases
+            label: Cases
+            description: Cada item é um projeto. A ordem aqui é a ordem no site.
+            type: object
+            list: true
+            fields:
+              - name: titulo
+                label: Nome do projeto
+                type: string
+              - name: cliente
+                label: Marca ou cliente
+                type: string
+              - name: categorias
+                label: Categorias
+                description: As etiquetas embaixo do nome. A primeira fica amarela.
+                type: string
+                list: true
+              - name: formato
+                label: Como mostrar as fotos
+                type: select
+                options:
+                  values:
+                    - value: vertical
+                      label: Uma foto em pé, grande
+                    - value: horizontal
+                      label: Uma foto deitada
+                    - value: galeria
+                      label: Galeria com 3 (uma grande e duas pequenas)
+                    - value: tres_verticais
+                      label: Três em pé, lado a lado (bom para vídeos e peças)
+              - name: midias
+                label: Fotos do projeto
+                type: object
+                list: true
+                fields:
+                  - name: foto
+                    label: Foto
+                    type: image
+                  - name: descricao
+                    label: Descrição da foto
+                    type: string
+                  - name: texto_sem_foto
+                    label: Texto do espaço sem foto
+                    description: Só aparece se não tiver foto. Ex. Inserir foto 02.
+                    type: string
+              - name: detalhes
+                label: Detalhes do projeto
+                description: Ex. Contexto, Meu papel, Entregas, Resultado.
+                type: object
+                list: true
+                fields:
+                  - name: rotulo
+                    label: Título do detalhe
+                    type: string
+                  - name: texto
+                    label: Texto
+                    description: Para negrito, use **texto**. Texto entre colchetes [assim] aparece com borda tracejada, como lembrete do que falta preencher.
+                    type: text
+
+      - name: videos
+        label: Vídeos
+        type: object
+        fields:
+          - name: titulo
+            label: Título
+            type: string
+          - name: titulo_destaque
+            label: Final do título em amarelo
+            type: string
+          - name: introducao
+            label: Texto ao lado do título
+            type: text
+          - name: itens
+            label: Vídeos
+            type: object
+            list: true
+            fields:
+              - name: titulo
+                label: Título do vídeo
+                type: string
+              - name: texto
+                label: Texto embaixo do título
+                type: string
+              - name: etiqueta
+                label: Etiqueta branca
+                description: Ex. Bastidores. Pode deixar vazio.
+                type: string
+              - name: capa
+                label: Capa do vídeo
+                description: Uma imagem em pé (formato de story).
+                type: image
+              - name: link
+                label: Link do vídeo
+                description: Cole o link do Reels, TikTok ou YouTube. Vazio, o card não abre nada.
+                type: string
+
+      - name: marcas
+        label: Marcas
+        type: object
+        fields:
+          - name: rotulo
+            label: Etiqueta pequena acima do título
+            type: string
+          - name: titulo
+            label: Título
+            type: text
+          - name: itens
+            label: Marcas
+            description: O ideal são 4 ou 8 marcas, para a grade ficar completa.
+            type: object
+            list: true
+            fields:
+              - name: nome
+                label: Nome da marca
+                type: string
+              - name: logo
+                label: Logo
+                description: Se colocar o logo, ele aparece no lugar do nome. Prefira PNG com fundo transparente.
+                type: image
+
+      - name: trajetoria
+        label: Trajetória
+        type: object
+        fields:
+          - name: rotulo
+            label: Etiqueta pequena acima do título
+            type: string
+          - name: titulo
+            label: Título (parte forte)
+            type: string
+          - name: titulo_fino
+            label: Título (parte fina, segunda linha)
+            type: string
+          - name: texto_link
+            label: Texto antes do link do LinkedIn
+            type: string
+          - name: itens
+            label: Experiências
+            description: A ordem aqui é a ordem no site. A mais recente primeiro.
+            type: object
+            list: true
+            fields:
+              - name: periodo
+                label: Período
+                description: Ex. desde 2026, ou 2022 a 2024.
+                type: string
+              - name: empresa
+                label: Empresa
+                type: string
+              - name: cargo
+                label: Cargo
+                type: string
+              - name: atual
+                label: Trabalho atual (bolinha amarela)
+                type: boolean
+
+      - name: contato
+        label: Contato
+        type: object
+        fields:
+          - name: rotulo
+            label: Etiqueta pequena acima do título
+            type: string
+          - name: titulo
+            label: Título (parte forte)
+            type: string
+          - name: titulo_fino
+            label: Título (parte fina)
+            type: string
+          - name: convite
+            label: Frase de convite
+            type: text
+          - name: nome
+            label: Nome
+            type: string
+          - name: cidade
+            label: Cidade
+            type: string
+          - name: botao_whatsapp
+            label: Texto do botão de WhatsApp
+            type: string
+          - name: foto
+            label: Foto redonda
+            type: image
+          - name: foto_descricao
+            label: Descrição da foto
+            type: string
+          - name: email
+            label: Email
+            description: Deixe vazio para esconder.
+            type: string
+          - name: whatsapp
+            label: WhatsApp
+            description: Só números, com 55 e o DDD. Ex. 5541996967504
+            type: string
+            pattern:
+              regex: "^(55[0-9]{10,11})?$"
+              message: Use só números, começando com 55 e o DDD. Ex. 5541996967504
+          - name: linkedin
+            label: Link do LinkedIn
+            description: Endereço completo do perfil.
+            type: string
+          - name: linkedin_texto
+            label: Texto do link do LinkedIn
+            type: string
+          - name: instagram
+            label: Instagram
+            description: Só o usuário, sem @. Deixe vazio para esconder.
+            type: string
+          - name: tiktok
+            label: TikTok
+            description: Só o usuário, sem @. Deixe vazio para esconder.
+            type: string
+          - name: base
+            label: Base
+            type: string
+
+      - name: rodape
+        label: Rodapé
+        type: object
+        fields:
+          - name: frase
+            label: Frase
+            type: string
+          - name: destaque
+            label: Palavra final em amarelo
+            type: string
+          - name: assinatura
+            label: Assinatura
+            type: string

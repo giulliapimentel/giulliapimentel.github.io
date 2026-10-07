@@ -1,0 +1,8 @@
+title: Giullia Pimentel
+url: https://giulliapimentel.github.io
+markdown: kramdown
+kramdown:
+  input: GFM
+exclude:
+  - .pages.yml
+  - README.md
